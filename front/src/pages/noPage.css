@@ -1,0 +1,9 @@
+.nopage_centraldiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nopage_image {
+    width: 60%;
+}
