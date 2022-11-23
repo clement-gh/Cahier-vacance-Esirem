@@ -1,0 +1,6 @@
+.menu_list {
+    display: flex;
+}
+.menu_list_item {
+    flex: 1;
+}
