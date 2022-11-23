@@ -1,12 +1,12 @@
 import React from "react";
-import { Menu } from "../components/menu";
+import { NavBar } from "../components/navbar";
 
 export class Home extends React.Component {
     
     render(): React.ReactNode {
         return (
             <main>
-                <Menu></Menu>
+                <NavBar></NavBar>
                 <p>Hello</p>
             </main>
         );

@@ -1,7 +1,7 @@
 import React from "react";
-import "./menu.css"
+import "./navbar.css"
 
-export class Menu extends React.Component  {
+export class NavBar extends React.Component  {
 
     render(): React.ReactNode {
         return (

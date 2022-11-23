@@ -1,11 +1,11 @@
 import React from "react";
-import { Menu } from "../components/menu";
+import { NavBar } from "../components/navbar";
 
 export class Cours extends React.Component {
     render(): React.ReactNode {
         return (
             <main>
-                <Menu></Menu>
+                <NavBar></NavBar>
                 <h1>Cours</h1>
             </main>
         );
