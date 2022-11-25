@@ -1,0 +1,16 @@
+.home_page_title {
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.home_page_text {
+    padding: 16px;
+}
+
+.home_page_blocs_courses {
+    padding-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
