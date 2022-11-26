@@ -2,4 +2,36 @@
     background-color: #2F2F2F;
     width: 100%;
     height: 160px;
+    display: flex;
+}
+
+.footer_imgs_emplacement {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer_imgs_emplacement img {
+    max-height: 48%;
+    margin-left: 7%;
+}
+
+.footer_text_emplacement {
+    flex: 1;
+}
+
+.footer_list {
+    margin: 25px 0 16px 0;
+    height: 60%;
+    color: white;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+}
+
+.footer_list_item {
+    margin-top: 10px;
 }
