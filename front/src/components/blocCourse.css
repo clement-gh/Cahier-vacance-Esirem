@@ -2,24 +2,25 @@
     margin: 2.5% 2.5% 0 2.5%;
     width: 27%;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .bloc_course_icon {
-    margin-bottom: -25%;
-    height: 100px;
+    margin: 0 0 -15% 36%;
+    height: 40%;
     width: 30%;
     border-radius: 50%;
     background-color: #009EE2;
-    z-index: 1;
+}
+
+.bloc_course_icon_img {
+    margin: 20% 0 0 15%;
+    max-width: 70%;
+    max-height: 70%;
 }
 
 .bloc_course_image {
     position: relative;
     border-radius: 10%;
     width: 100%;
-    transform: translateY(15%);
     z-index: -1;
 }
