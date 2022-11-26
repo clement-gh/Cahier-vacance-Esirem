@@ -5,11 +5,17 @@ export class NavBar extends React.Component  {
 
     render(): React.ReactNode {
         return (
-            <div className="menu">
-                <ul className="menu_list">
-                    <li className="menu_list_item"><a href="./">Home</a></li>
-                    <li className="menu_list_item"><a href="./cours">Cours</a></li>
-                    <li className="menu_list_item"><a href="./exercices">Exercices</a></li>
+            <div className="navbar">
+                <div className="navbar_logo_emplacement">
+                    <a href="./">
+                        <img className="navbar_esirem_logo" src="./images/esirem_logo.png"/>
+                    </a>
+                </div>
+                <ul className="navbar_list">                    
+                    <li className="navbar_list_item"><a href="./matieres">Matières</a></li>
+                    <li className="navbar_list_item"><a href="./cours">Cours</a></li>
+                    <li className="navbar_list_item"><a href="./exercices">Exercices</a></li>
+                    <li className="navbar_list_item"><a href="./about">A propos</a></li>
                 </ul>
             </div>
         );
