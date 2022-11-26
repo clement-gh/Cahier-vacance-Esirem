@@ -2,3 +2,24 @@
 body {
     padding: 0;
 }
+
+/* Scrollbar for Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #009EE2 #D6D6D6;
+}
+
+/* Scrollbar for Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #D6D6D6;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #009EE2;
+    border-radius: 20px;
+    border: 1px solid #D6D6D6;
+}

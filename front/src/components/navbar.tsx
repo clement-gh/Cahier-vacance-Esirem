@@ -8,7 +8,7 @@ export class NavBar extends React.Component  {
             <div className="navbar">
                 <div className="navbar_logo_emplacement">
                     <a href="./">
-                        <img className="navbar_esirem_logo" src="./images/esirem_logo.png"/>
+                        <img className="navbar_esirem_logo" src="./images/esirem_logo.png" alt="logo_esirem"/>
                     </a>
                 </div>
                 <ul className="navbar_list">                    
