@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { Home } from './pages/home';
 import { Cours } from './pages/cours';
 import { NoPage } from "./pages/noPage";
+import { Matiere } from "./pages/matiere";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -14,6 +15,7 @@ root.render(
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/cours" element={<Cours/>} />
+      <Route path="/matieres" element={<Matiere/>} />
       <Route path="*" element={<NoPage />} />
     </Routes>
   </BrowserRouter>
