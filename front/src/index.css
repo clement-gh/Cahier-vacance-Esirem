@@ -1,4 +1,9 @@
 /*Global css*/
+html {
+    --main-color: #009EE2;
+    --second-color: #C6C6C6;
+}
+
 body {
     margin: 0;
 }
@@ -6,7 +11,7 @@ body {
 /* Scrollbar for Firefox */
 * {
     scrollbar-width: thin;
-    scrollbar-color: #009EE2 #D6D6D6;
+    scrollbar-color: var(--main-color) var(--second-color);
 }
 
 /* Scrollbar for Chrome, Edge, and Safari */
@@ -15,11 +20,11 @@ body {
 }
 
 *::-webkit-scrollbar-track {
-    background: #D6D6D6;
+    background: var(--second-color);
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: #009EE2;
+    background-color: var(--main-color);
     border-radius: 20px;
-    border: 1px solid #D6D6D6;
+    border: 1px solid var(--second-color);
 }
