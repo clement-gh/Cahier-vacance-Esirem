@@ -18,7 +18,11 @@
     list-style: none;
 }
 .navbar_list_item {
-    flex: 1;
+    display: flex;
+
+    padding: 0 10px;
+    height: 100%;
+    border-bottom: 3px solid transparent;
 }
 .navbar_list_item a {
     text-decoration: none;
