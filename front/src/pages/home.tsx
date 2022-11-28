@@ -4,8 +4,7 @@ import { Footer } from "../components/footer";
 import { NavBar } from "../components/navbar";
 import { Title } from "../components/title";
 import "./home.css";
-import { BlocCourseProps } from "../model/blocCourseProps";
-//import  { bloctype} from "../model/blocCourseProps";
+
 
 export class Home extends React.Component  {
 
@@ -20,8 +19,8 @@ export class Home extends React.Component  {
                 
                 <section className="home_page_blocs_courses">
                     <BlocCourse  imgAdd="./images/pexels-photo-459653.jpeg" imgAlt="background_bloc_informatique" iconAdd="./images/computer.png"iconAlt="computer_icon"/>
-                    <BlocCourse  imgAdd="./images/pexels-photo-459653.jpeg" imgAlt="background_bloc_informatique" iconAdd="./images/logoMaths.png"iconAlt="maths_icon"/>
-                    <BlocCourse  imgAdd="./images/pexels-photo-459653.jpeg" imgAlt="background_bloc_informatique" iconAdd="./images/logoElectronique.png"iconAlt="elec_icon"/>
+                    <BlocCourse  imgAdd="./images/background_maths.png" imgAlt="background_bloc_informatique" iconAdd="./images/logoMaths.png"iconAlt="maths_icon"/>
+                    <BlocCourse  imgAdd="./images/background_elec.png" imgAlt="background_bloc_informatique" iconAdd="./images/logoElectronique.png"iconAlt="elec_icon"/>
                 </section>
                 <Footer/>
             </main>
