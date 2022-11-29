@@ -2,7 +2,15 @@
     margin: 2.5% 2.5% 0 2.5%;
     width: 27%;
     overflow: hidden;
+    
+    transition: transform 0.5s;
 }
+
+.bloc_course:hover {
+    transform: translateY(-5%);
+    transition: transform 0.5s;
+}
+
 
 .bloc_course_icon {
     margin: 0 0 -15% 36%;
