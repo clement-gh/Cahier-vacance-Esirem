@@ -1,5 +1,6 @@
 export type BlocCourseProps = {
-   
+    title: string;
+
     iconAdd: string;
     iconAlt: string;
    
