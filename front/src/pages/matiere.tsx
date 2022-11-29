@@ -11,7 +11,7 @@ export class Matiere extends React.Component {
 
     render(): React.ReactNode {
         return (
-            <main>
+            <main className="page_matiere">
                 <NavBar/>
                 <Title content="Titre principale"/>
 
