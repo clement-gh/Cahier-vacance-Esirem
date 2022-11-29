@@ -6,7 +6,5 @@
 .bloc_matiere_list_item {
     margin: 0px 0 41px 0;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-left: 15%;
 }
