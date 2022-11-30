@@ -11,12 +11,15 @@
     padding-left: 25px;
 }
 .navbar_esirem_logo {
+    margin: 3px 0 4px 0;
     max-height: 45px;
 }
 .navbar_list {
+    padding: 0;
     margin: 0;
     flex: 1;
     display: flex;
+    align-items: center;
     list-style: none;
 }
 .navbar_list_item {
