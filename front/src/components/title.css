@@ -1,5 +1,7 @@
 .title_h1 {
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 52px;
     text-align: center;
     text-decoration: underline;
 }
