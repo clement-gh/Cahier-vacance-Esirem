@@ -3,6 +3,7 @@ import { ParagraphCourseProps } from "../../model/Course_page_models/paragraphCo
 import { SecondaryTitleCourse } from "./secondaryTitleCourse";
 import { TitleCourse } from "./titleCourse";
 import "./paragraphCourse.css"
+import { TipsCourse } from "./TipsCourse";
 
 export class ParagraphCourse extends React.Component<ParagraphCourseProps> {
     render(): React.ReactNode {
@@ -12,6 +13,7 @@ export class ParagraphCourse extends React.Component<ParagraphCourseProps> {
                 {this.props.secondaryTitle && //check if secondaryTitle is defined
                 <SecondaryTitleCourse content={this.props.secondaryTitle}/>}
                 <p className="paragraph_course_text">{this.props.content}</p>
+                <TipsCourse/>
             </div>
         );
     }
