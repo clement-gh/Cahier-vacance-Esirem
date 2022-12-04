@@ -1,6 +1,9 @@
 .home_page_text {
     padding: 16px;
     text-align: justify;
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 400;
 }
 
 .home_page_blocs_courses {
