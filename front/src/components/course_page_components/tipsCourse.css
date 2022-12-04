@@ -18,12 +18,10 @@
 }
 
 .tips_course_circle {
-    border: 8px solid #FACE34;
     border-radius: 50%;
     width: 172px;
     height: 172px;
     z-index: 1;
-    background-color: #FFF3CA;
     display: flex;
     justify-content: center;
     overflow: hidden;
@@ -31,9 +29,7 @@
 
 .tips_course_rectangle {
     margin-left: -10%;
-    border: 8px solid #FACE34;
     border-radius: 15px;
-    background-color: #FFF3CA;
     width: 76%;
     height: 120px;
     z-index: -1;
@@ -44,4 +40,19 @@
 .tips_course_text {
     margin: auto 3% auto 13%;
     text-align: justify;
+}
+
+.tips_course_bordercolor_yellow{
+    border: 8px solid #FACE34;
+    background-color: #FFF3CA;
+}
+
+.tips_course_bordercolor_blue{
+    border: 8px solid #009EE2;
+    background-color: #FFFFFF;
+}
+
+.tips_course_bordercolor_red {
+    border: 8px solid #D41F1F;
+    background-color: #FEC3C3;
 }
