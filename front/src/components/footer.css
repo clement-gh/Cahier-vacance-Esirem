@@ -12,9 +12,15 @@
     align-items: center;
 }
 
+.footer_imgs_emplacement a {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    margin-left: 10%;
+}
+
 .footer_imgs_emplacement img {
-    max-height: 48%;
-    margin-left: 7%;
+    max-height: 100%;
 }
 
 .footer_text_emplacement {
@@ -34,4 +40,9 @@
 
 .footer_list_item {
     margin-top: 10px;
+}
+
+.footer_list_item a {
+    text-decoration: none;
+    color: white;
 }

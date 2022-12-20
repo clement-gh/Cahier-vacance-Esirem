@@ -1,7 +1,9 @@
 .navbar {
+    position: sticky;
+    top: 0;
+    background-color: white;
     box-shadow: 0px 3px 0px var(--second-color);
     display: flex;
-    position: relative;
     z-index: 100;
 }
 .navbar_logo_emplacement {
@@ -9,12 +11,15 @@
     padding-left: 25px;
 }
 .navbar_esirem_logo {
+    margin: 3px 0 4px 0;
     max-height: 45px;
 }
 .navbar_list {
+    padding: 0;
     margin: 0;
     flex: 1;
     display: flex;
+    align-items: center;
     list-style: none;
 }
 .navbar_list_item {

@@ -1,0 +1,24 @@
+.paragraph_course_text {
+    text-align: justify;
+    margin: auto 3% auto 3%;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20.8px;
+}
+
+.paragraph_course_title {
+    text-decoration: underline;
+    font-style: italic;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 36.4px;
+    margin-left: 3%;
+}
+
+.paragraph_course_secondary_title {
+    font-style: italic;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 31.2px;
+    margin-left: 7%;
+}
