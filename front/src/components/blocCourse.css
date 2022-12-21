@@ -13,7 +13,7 @@
 
 
 .bloc_course_icon {
-    margin: 0 0 -15% 36%;
+    margin: 0 0 -15% 36%; 
     height: 35%;
     width: 30%;
     border-radius: 50%;
@@ -45,3 +45,16 @@
     color: whitesmoke;
     font-size: 20px;
 }
+
+@media ( width < 600px) {
+    .bloc_course_icon {
+        margin: 0 0 -15% 36%; 
+        height: 30%;
+        width: 30%;
+        border-radius: 50%;
+        background-color: var(--main-color);
+    }
+    
+    
+}
+    
