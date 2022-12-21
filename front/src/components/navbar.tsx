@@ -11,13 +11,9 @@ export class NavBar extends React.Component  {
                         <img className="navbar_esirem_logo" src="./images/esirem_logo.png" alt="logo_esirem"/>
                     </a>
                 </div>
-<<<<<<< Updated upstream
-                <ul className="navbar_list">                    
-=======
 
                 <ul className="navbar_list" >  
                     <li className="navbar_list_item"><a href="./connexion">Connexion</a></li>                  
->>>>>>> Stashed changes
                     <li className="navbar_list_item"><a href="./matieres">Matières</a></li>
                     <li className="navbar_list_item"><a href="./cours">Cours</a></li>
                     <li className="navbar_list_item"><a href="./exercices">Exercices</a></li>
