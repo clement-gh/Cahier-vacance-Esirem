@@ -21,6 +21,7 @@
 
 .footer_imgs_emplacement img {
     max-height: 100%;
+    display: flex;
 }
 
 .footer_text_emplacement {
