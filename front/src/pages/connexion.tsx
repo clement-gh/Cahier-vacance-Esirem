@@ -16,11 +16,15 @@ export class Connexion extends React.Component {
                                 <input type="text" name="name" placeholder="Nom d'utilisateur" />
                             </label>    
                             <label>
-
                                 <input type="password" name="password" placeholder="Mot de passe" />
                             </label>
                             <input type="submit" value="Se connecter" />
                         </form>
+                    </div>
+
+                    <div className="goToInscription">
+                    
+                        <a href="./inscription">Pas encore inscrit ?</a>
                     </div>
                 </div>
             </main>
