@@ -13,7 +13,7 @@ export class Footer extends React.Component {
                     <ul className="footer_list">             
                        
                         <li className="footer_list_item"><a href="/licence">Licence</a></li>
-                        <li className="footer_list_item"><a href="/rgpd">RGPD</a></li>
+                        <li className="footer_list_item"><a href="https://www.cnil.fr/fr/comprendre-le-rgpd">RGPD</a></li>
                     </ul>
                 </div>
             </footer>
