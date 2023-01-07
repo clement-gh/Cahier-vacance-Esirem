@@ -8,7 +8,7 @@ export class NavBar extends React.Component  {
             <div className="navbar">
                 <div className="navbar_logo_emplacement">
                     <a href="./">
-                        <img className="navbar_esirem_logo" src="./images/esirem_logo.png" alt="logo_esirem"/>
+                        <img className="home" src="./images/home.png" alt="logo_home" width="50" height="50"/>
                     </a>
                 </div>
 
@@ -22,7 +22,7 @@ export class NavBar extends React.Component  {
                 <div className="dropdown">
                 
                     
-                    <img src="./images/menu.png" alt="Cinque Terre" width="50" height="50"></img>
+                    <img src="./images/menu.png" alt="menu" width="50" height="50"></img>
                         <div className="dropdown-content">
         
                             <a href="./connexion">Connexion</a>
