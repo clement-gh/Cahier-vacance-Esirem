@@ -1,31 +1,27 @@
-import React from "react";
+import React, { createRef } from "react";
 import "./inscription.css";
 
 import { NavBar } from "../components/navbar";
 import { Title } from "../components/title";
+type State = {
+    text: string;
+  };
 export class Inscription extends React.Component {
-    constructor(props: {} | Readonly<{}>) {
-        super(props);
-     
-        this.handleInputChange = this.handleInputChange.bind(this);
     
-    }
-    handleInputChange(event: { target: any; }) {
-        const target = event.target;
-        const userName = target.userName;
-        const password = target.password;
-        const confirmPassword = target.confirmPassword;
-        const mail = target.mail;
-        const confirmMail = target.confirmMail;
-        this.setState({
-            userName: userName,
-            password: password,
-            confirmPassword: confirmPassword,
-            mail: mail,
-            confirmMail: confirmMail
-        });
-    }
+    state = {
+        text: "",
+      };
+    private txtMail = createRef<HTMLInputElement>();
 
+    handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+        this.setState({text: e.currentTarget.value})
+      }
+
+    processForm()
+    {
+        console.log("Go !")
+    }
+      
     render(){
         return (
          <main>
@@ -33,20 +29,9 @@ export class Inscription extends React.Component {
                 <NavBar/>
                 <Title content="Inscription"/>
                 <div className="inscription_form">
-                    <form
-                    onSubmit={(e: React.SyntheticEvent) => {
-                        e.preventDefault();
-                        const target = e.target as typeof e.target & {
-                          email: { value: string };
-                          password: { value: string };
-                        };
-                        const email = target.email.value; // typechecks!
-                        const password = target.password.value; // typechecks!
-                        
-                      }}
-                    >
+                    <form >
                         <label>
-                            <input type="text" name="userName" placeholder="Nom d'utilisateur" />
+                            <input type="text" value={this.state.text} name="userName" placeholder="Nom d'utilisateur" />
                         </label>
                         <label>
                             <input type="password" name="password" placeholder="Mot de passe" />
@@ -55,7 +40,7 @@ export class Inscription extends React.Component {
                             <input type="password" name="confirmPassword" placeholder="Confirmer le mot de passe" />
                         </label>
                         <label>
-                            <input type="text" name="mail" placeholder="Adresse mail" />
+                            <input type="text" name="mail" placeholder="Adresse mail" ref={this.txtMail} />
                         </label>
                         <label>
                             <input type="text" name="confirmMail" placeholder="Confirmer l'adresse mail" />
@@ -83,9 +68,9 @@ export class Inscription extends React.Component {
                             <input type="checkbox" className="custom-checkbox-button_3A" />
                             <span className="custom-checkbox-button__label">3A</span>
                         </label>
-                        
+                        <button type="button" onClick={()=>{this.processForm()}}>Envoyer</button>
                     </form>
-                        <input type="submit" value="S'inscrire" />
+                        
                 </div>
             </div>
         </main>
