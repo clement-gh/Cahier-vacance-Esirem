@@ -3,7 +3,7 @@ export type BlocMatiereState = {
 };
 
 export type BlocMatiereProps = {
-    niveau: '1A'| '2A' | '3A' | '4A' | '5A',
+    niveau: string,
     links?: BlocMatiereLink[],   //sera probablement chargé avec une requête au serveur
 };
 
