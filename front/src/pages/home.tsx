@@ -20,8 +20,8 @@ export class Home extends React.Component  {
                 
                 <section className="home_page_blocs_courses">
                     <BlocCourse title="Informatique" imgAdd="./images/pexels-photo-459653.jpeg" imgAlt="background_bloc_informatique" iconAdd="./images/computer.png"iconAlt="computer_icon"/>
-                    <BlocCourse title="Mathématique" imgAdd="./images/pexels-photo-459653.jpeg" imgAlt="background_bloc_informatique" iconAdd="./images/logoMaths.png"iconAlt="maths_icon"/>
-                    <BlocCourse title="Électronique" imgAdd="./images/pexels-photo-459653.jpeg" imgAlt="background_bloc_informatique" iconAdd="./images/logoElectronique.png"iconAlt="elec_icon"/>
+                    <BlocCourse title="Mathématique" imgAdd="./images/background_maths.png" imgAlt="background_bloc_maths" iconAdd="./images/logoMaths.png"iconAlt="maths_icon"/>
+                    <BlocCourse title="Électronique" imgAdd="./images/background_elec.png" imgAlt="background_bloc_informatique" iconAdd="./images/logoElectronique.png"iconAlt="elec_icon"/>
                 </section>
                 <Footer/>
             </main>

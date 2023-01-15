@@ -8,11 +8,12 @@
 }
 .navbar_logo_emplacement {
     flex: 1;
-    padding-left: 25px;
+    padding-left: 10px;
 }
 .navbar_esirem_logo {
     margin: 3px 0 4px 0;
     max-height: 45px;
+    
 }
 .navbar_list {
     padding: 0;
@@ -41,7 +42,7 @@
 
   
   .dropdown {
-   padding-right: 5px;
+   padding-right: 10px;
     position: relative;
     display: inline-block;
   }
