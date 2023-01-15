@@ -1,0 +1,8 @@
+Version utilisé
+
+Node V 18.12.1
+
+Pour executer le back :
+Étape 1: démarrer votre serveur mysql ( nous avons utilisé xampp pour le dév mais si vous avez autres chose pas de soucis)
+Étape 2: npm run build
+Étape 3: npm run start
