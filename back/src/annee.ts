@@ -16,7 +16,7 @@ export default async function routes (fastify : any, options : any) {
         //return une annee 
         fastify.get('/annee/:id', (request:FastifyRequest<{
             Params: {
-              id:number,
+              id: string,
             };
         }>, reply:FastifyReply) => {
             fastify.mysql.query(
