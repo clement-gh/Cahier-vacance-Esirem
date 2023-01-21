@@ -30,8 +30,8 @@ export class BlocMatiere extends React.Component<BlocMatiereProps, BlocMatiereSt
                 this.props.links?.map((link: BlocMatiereLink, _index: number) => {
                     return <div className="block_matiere_item_link">
                         <div className="block_matiere_item_link_polygon"></div>
-                        <span>{link.title}</span>
-                        </div>
+                        <span><a href={link.link}>{link.title}</a></span>
+                    </div>
                 }
             )}
             </div>
