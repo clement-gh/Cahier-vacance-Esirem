@@ -175,9 +175,11 @@ ADD CONSTRAINT FK_Rubrique_ExoLong
 FOREIGN KEY (idExoLong) REFERENCES ExoLong(idExoLong);
 
 INSERT INTO anneeesirem(idAnneeEsirem,nom)VALUES
-(1,"3A"),
-(2,"4A"),
-(3,"5A");
+(1,"1A"),
+(2,"2A"),
+(3,"3A"),
+(4,"4A"),
+(5,"5A");
 select * from anneeesirem;
 
 INSERT INTO formation(idFormation,nom)VALUES
@@ -242,8 +244,21 @@ select * from exolongeffectué;
 
 INSERT INTO matiere(idMatiere,nom,idAnneeEsirem)VALUES
 (1,"Info",1),
-(2,"Elec",3),
-(3,"Maths",1);
+(  2,"Info",2),
+(3,"Info",3),
+(4,"Info",4),
+(5,"Info",5),
+(6,"Maths",1),
+(7,"Maths",2),
+(8,"Maths",3),
+(9,"Maths",4),
+(10,"Maths",5),
+(11,"Elec",1),
+(12,"Elec",2),
+(13,"Elec",3),
+(14,"Elec",4),
+(15,"Elec",5);
+
 select * from matiere;
 
 INSERT INTO quizz(idQuizz,titreQuizz,contenu,difficulte,idMatiere)VALUES
