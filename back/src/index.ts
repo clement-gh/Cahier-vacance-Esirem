@@ -7,6 +7,7 @@ import coursImp from './cours';
 import quizzImp from './quizz';
 import exoLongImp from './exolong';
 import anneeImp from './annee';
+import matiereImp from './matiere';
 
 const server = require('fastify')()
 
@@ -20,6 +21,7 @@ server.register(coursImp);
 server.register(quizzImp);
 server.register(exoLongImp);
 server.register(anneeImp);
+server.register(matiereImp);
 
 server.get('/', function(request: FastifyRequest, reply: FastifyReply) {
     server.mysql.query(

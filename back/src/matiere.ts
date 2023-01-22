@@ -1,0 +1,32 @@
+import { FastifyReply, FastifyRequest } from "fastify";
+
+export default async function routes (fastify : any, options : any) {
+    
+
+
+
+        //data correspond au info retourné par la requete sql
+        //return la liste des matières
+        fastify.get("/matiere", (request : FastifyRequest, reply : FastifyReply) => {
+            fastify.mysql.query(
+                'SELECT * FROM `matiere`',
+                function onResult (err:any, result:any) {
+                    reply.send(err || result) 
+
+                }
+                )
+            })
+            fastify.get('/matiere/:id', (request:FastifyRequest<{
+                Params: {
+                  idMatiere: string,
+                };
+            }>, reply:FastifyReply) => {
+                fastify.mysql.query(
+                    'SELECT * FROM `matiere` WHERE idMatiere = ' + request.params.idMatiere,
+                    function onResult (err:any, result:any) {
+                        reply.send(err || result[0])
+                    }
+                )
+            })
+
+    }
