@@ -9,8 +9,7 @@ import "./matiere.css";
 //Page d'une Matiere qui affichera les cours correspondants
 //Doit chargé la liste des cours via l'API
 interface IStateMatiere {
-    matiere: string[],
-    //data: { idAnneeEsirem: number; nom: string }[];
+    matieres: string[],
 }  
 
 const years = [ 
@@ -21,32 +20,34 @@ const years = [
     {idAnneeEsirem:5, nom:"5A"}, 
 ]
 
-export class Matiere extends React.Component  {
-    state: IStateMatiere = {    
-        matiere : [
-            "Electronique",
-            "Mathématiques",
-            "Informatique",
-        ],
-    };
-   
+export class Matiere extends React.Component<any, IStateMatiere>  {
+    constructor(props: any) {
+        super(props);
+        this.state = {    
+            matieres : [],
+        };
+    }
 
-    componentDidMount(): void {        
-        //TODO : FAIRE LE LIEN AVEC LE BACK
-        
-        // fetch('http://[::1]:4000/annee').then(response => response.json())
-        // .then((data) => {
-        //     this.setState({  data });
-           
-        // }, error => {
-        //     console.log(error);
-        // }
-        // );
+    async componentDidMount() {        
+        let JSON_Matieres : string[] = [];
+        let response = await fetch('http://[::1]:4000/matiere');
+        if(response.status === 200) {
+            try {
+                JSON_Matieres = await response.json();
+            } catch {
+                console.log("PARSE ERROR");
+            }
+        } else {
+            console.log("FETCH ERROR");
+        }
+        let matieresList : string[] = JSON_Matieres.map((value: any) => {
+            return value.nom;
+        });
+        this.setState({matieres: matieresList});
     }
    
    
     render(): React.ReactNode {
-        console.log(years);
         return (
             <main className="page_matiere">
                 <NavBar/>
@@ -54,7 +55,7 @@ export class Matiere extends React.Component  {
                 <div>
                 <ul className="bloc_matiere_list">
                 {
-                    this.state.matiere.map((name) => (
+                    this.state.matieres.map((name) => (
                         <li key={name} className="bloc_matiere_list_item">
                             <BlocMatiere niveau = { name } links={
                                 years.map((year) => (
