@@ -10,7 +10,7 @@ import "./matiere.css";
 //Doit chargé la liste des cours via l'API
 interface IStateMatiere {
     matieres: string[],
-    years: {nomAnnee: string, nomMatiere: string}[]
+    years: {nomAnnee: string, nomMatiere: string, idMatiere : number}[]
 }  
 
 
@@ -54,8 +54,8 @@ export class Matiere extends React.Component<any, IStateMatiere>  {
         } else {
             console.log("FETCH ERROR");
         }
-        let anneesList : {nomAnnee: string, nomMatiere: string}[] = JSON_Annees.map((value: any) => {
-        return {nomAnnee: value.nomAnnee, nomMatiere: value.nomMatiere};
+        let anneesList : {nomAnnee: string, nomMatiere: string, idMatiere : number}[] = JSON_Annees.map((value: any) => {
+        return {nomAnnee: value.nomAnnee, nomMatiere: value.nomMatiere , idMatiere : value.idMatiere};
         });
         this.setState({years: anneesList});
 
@@ -77,7 +77,7 @@ export class Matiere extends React.Component<any, IStateMatiere>  {
                             <li key={name} className="bloc_matiere_list_item">
                                 <BlocMatiere niveau = { name } links={
                                     filteredYears.map((year) => (
-                                        {link: ("/" + year.nomMatiere +"/" + year.nomAnnee),
+                                        {link: ("/" + year.nomMatiere + year.nomAnnee + "/" + year.idMatiere),
                                         title: (year.nomMatiere + " " + year.nomAnnee)}            
                                     ))                     
                                 }

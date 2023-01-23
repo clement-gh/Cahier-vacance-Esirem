@@ -284,9 +284,10 @@ select * from quizzeffectué;
 
 INSERT INTO rubrique(idRubrique,idCours,idMatiere,idQuizz,idExoLong,nom)VALUES
 (1,2,1,1,1,"R1"),
-(2,1,2,5,5,"R2"),
-(3,3,3,7,7,"R3");
-
+(2,1,11,5,5,"R2"),
+(3,3,3,7,7,"R3"),
+(4,3,11,8,7,"R4"), 
+(5,3,11,9,NULL,"R5");
 select * from rubrique;
 
 INSERT INTO succes(idSucces,nom,description)VALUES

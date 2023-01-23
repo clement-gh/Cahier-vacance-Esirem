@@ -21,7 +21,7 @@ root.render(
       <Route path="/matieres" element={<Matiere/>} />
       <Route path="/connexion" element={<Connexion/>} />
       <Route path="/inscription" element={<Inscription/>} />
-      <Route path="/:nomMatiere/:nomAnnee" element={<Annee/>}/>
+      <Route path="/:nom/:idMatiere" element={<Annee/>}/>
       
       <Route path="*" element={<NoPage />} />
     </Routes>

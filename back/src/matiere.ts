@@ -9,7 +9,7 @@ export default async function routes (fastify : any, options : any) {
         //return la liste des nom de matières
         fastify.get("/listeMatieres", (request : FastifyRequest, reply : FastifyReply) => {
             fastify.mysql.query(
-               ' SELECT * FROM `matiere` Group by nom',
+        ' SELECT * FROM `matiere`  GROUP BY nom ORDER BY idMatiere ASC',
                 //'SELECT * FROM `matiere`',
                 function onResult (err:any, result:any) {
                     reply.send(err || result) 
@@ -35,7 +35,7 @@ export default async function routes (fastify : any, options : any) {
             fastify.get('/matiere', (request:FastifyRequest, reply:FastifyReply) => {
                 fastify.mysql.query(
                     
-                    'SELECT anneeesirem.nom AS nomAnnee, matiere.nom AS nomMatiere FROM `anneeesirem` RIGHT JOIN `matiere` ON anneeesirem.idAnneeEsirem = matiere.idAnneeEsirem',
+                    'SELECT anneeesirem.nom AS nomAnnee, matiere.nom AS nomMatiere , matiere.idMatiere FROM `anneeesirem` RIGHT JOIN `matiere` ON anneeesirem.idAnneeEsirem = matiere.idAnneeEsirem ',
                     
                     function onResult (err:any, result:any) {
                         reply.send(err || result)

@@ -3,9 +3,14 @@ import { FastifyReply, FastifyRequest } from "fastify";
 export default async function routes (fastify : any, options : any) {
         //data correspond au info retourné par la requete sql
         //return la liste des cours 
-        fastify.get("/rubrique", (request : FastifyRequest,reply : FastifyReply) => {
+        fastify.get('/listRubrique/:idMatiere', (request:FastifyRequest<{
+            Params: {
+              
+              idMatiere: string,
+            };
+        }>, reply:FastifyReply) => {
             fastify.mysql.query(
-                'SELECT * FROM `rubrique`',
+                'SELECT nom FROM `rubrique` WHERE idMatiere= ?',request.params.idMatiere,
                 function onResult (err:any, result:any) {
                     reply.send(err || result)
                 }
@@ -14,16 +19,16 @@ export default async function routes (fastify : any, options : any) {
         })
         //data correspond au info retourné par la requete sql
         //return un cours 
-        fastify.get('/rubrique/:id/:idM', (request:FastifyRequest<{
+        fastify.get('/rubrique/:idMatiere', (request:FastifyRequest<{
             Params: {
-              id: string,
-                idM: string,
+          
+              idMatiere: string,
             };
         }>, reply:FastifyReply) => {
             fastify.mysql.query(
-                'SELECT * FROM  `rubrique` WHERE idRubrique = ' + request.params.id + ' AND WHERE idMatiere = ' + request.params.idM,
+                'SELECT * FROM  `rubrique` WHERE idMatiere= ?',request.params.idMatiere,
                 function onResult (err:any, result:any) {
-                    reply.send(err || result[0])
+                    reply.send(err || result)
                 }
             )
         })
