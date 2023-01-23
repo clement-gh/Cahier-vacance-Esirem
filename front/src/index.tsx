@@ -8,6 +8,7 @@ import { NoPage } from "./pages/noPage";
 import { Matiere } from "./pages/matiere";
 import { Connexion } from "./pages/connexion";
 import { Inscription } from "./pages/inscription";
+import {Annee} from "./pages/annee";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -20,6 +21,8 @@ root.render(
       <Route path="/matieres" element={<Matiere/>} />
       <Route path="/connexion" element={<Connexion/>} />
       <Route path="/inscription" element={<Inscription/>} />
+      <Route path="/matiere/annee" element={<Annee/>} />
+      
       <Route path="*" element={<NoPage />} />
     </Routes>
   </BrowserRouter>
