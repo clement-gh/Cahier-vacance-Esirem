@@ -77,7 +77,7 @@ export class Matiere extends React.Component<any, IStateMatiere>  {
                             <li key={name} className="bloc_matiere_list_item">
                                 <BlocMatiere niveau = { name } links={
                                     filteredYears.map((year) => (
-                                        {link: ("./matiere/" + name ),
+                                        {link: ("/" + year.nomMatiere +"/" + year.nomAnnee),
                                         title: (year.nomMatiere + " " + year.nomAnnee)}            
                                     ))                     
                                 }

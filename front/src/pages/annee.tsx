@@ -23,6 +23,20 @@ export class Annee extends React.Component<any,IStateAnnee> {
             <main>
                 <NavBar/>
               
+                
+                <div className="annee">
+                    <div className="annee__bloc">
+                        <div className="annee__bloc__title">
+                            <h2>Année</h2>
+                        </div>
+                        <div className="annee__bloc__content">
+
+                
+                        </div>
+                    </div>
+                </div>
+
+
                 <Footer/>
             </main>
         );
