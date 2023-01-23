@@ -10,27 +10,24 @@ import "./matiere.css";
 //Doit chargé la liste des cours via l'API
 interface IStateMatiere {
     matieres: string[],
+    years: {idAnneeEsirem: number, nom: string}[]
 }  
 
-const years = [ 
-    {idAnneeEsirem:1, nom:"1A"},             
-    {idAnneeEsirem:2, nom:"2A"}, 
-    {idAnneeEsirem:3, nom:"3A"}, 
-    {idAnneeEsirem:4, nom:"4A"}, 
-    {idAnneeEsirem:5, nom:"5A"}, 
-]
+
 
 export class Matiere extends React.Component<any, IStateMatiere>  {
     constructor(props: any) {
         super(props);
         this.state = {    
             matieres : [],
+            years: [],
         };
     }
 
     async componentDidMount() {        
         let JSON_Matieres : string[] = [];
         let response = await fetch('http://[::1]:4000/matiere');
+    
         if(response.status === 200) {
             try {
                 JSON_Matieres = await response.json();
@@ -43,7 +40,24 @@ export class Matiere extends React.Component<any, IStateMatiere>  {
         let matieresList : string[] = JSON_Matieres.map((value: any) => {
             return value.nom;
         });
+        
         this.setState({matieres: matieresList});
+        let JSON_Annees : {idAnneeEsirem: number, nom: string}[] = [];
+        response = await fetch('http://[::1]:4000/annee');
+        if(response.status === 200) {
+            try {
+                JSON_Annees = await response.json();
+            } catch {
+                console.log("PARSE ERROR");
+            }
+        } else {
+            console.log("FETCH ERROR");
+        }
+        let anneesList : {idAnneeEsirem: number, nom: string}[] = JSON_Annees.map((value: any) => {
+            return {idAnneeEsirem: value.idAnneeEsirem, nom: value.nom};
+        });
+        this.setState({years: anneesList});
+
     }
    
    
@@ -58,7 +72,7 @@ export class Matiere extends React.Component<any, IStateMatiere>  {
                     this.state.matieres.map((name) => (
                         <li key={name} className="bloc_matiere_list_item">
                             <BlocMatiere niveau = { name } links={
-                                years.map((year) => (
+                                this.state.years.map((year) => (
                                     {link: ("./Matiere/" + name + "/" + year.idAnneeEsirem),
                                     title: (name + " " + year.nom)}            
                                 ))                     
