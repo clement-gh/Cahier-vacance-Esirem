@@ -10,7 +10,7 @@ import "./matiere.css";
 //Doit chargé la liste des cours via l'API
 interface IStateMatiere {
     matieres: string[],
-    years: {idAnneeEsirem: number, nom: string}[]
+    years: {nomAnnee: string, nomMatiere: string}[]
 }  
 
 
@@ -20,13 +20,14 @@ export class Matiere extends React.Component<any, IStateMatiere>  {
         super(props);
         this.state = {    
             matieres : [],
-            years: [],
+
+            years : [],
         };
     }
 
     async componentDidMount() {        
         let JSON_Matieres : string[] = [];
-        let response = await fetch('http://[::1]:4000/matiere');
+        let response = await fetch('http://[::1]:4000/listeMatieres');
     
         if(response.status === 200) {
             try {
@@ -42,9 +43,9 @@ export class Matiere extends React.Component<any, IStateMatiere>  {
         });
         
         this.setState({matieres: matieresList});
-        let JSON_Annees : {idAnneeEsirem: number, nom: string}[] = [];
-        response = await fetch('http://[::1]:4000/annee');
-        if(response.status === 200) {
+       let JSON_Annees : {nomAnnee: string, nomMatiere: string}[] = [];
+        response = await fetch('http://[::1]:4000/matiere');
+        if (response.status === 200) {
             try {
                 JSON_Annees = await response.json();
             } catch {
@@ -53,13 +54,14 @@ export class Matiere extends React.Component<any, IStateMatiere>  {
         } else {
             console.log("FETCH ERROR");
         }
-        let anneesList : {idAnneeEsirem: number, nom: string}[] = JSON_Annees.map((value: any) => {
-            return {idAnneeEsirem: value.idAnneeEsirem, nom: value.nom};
+        let anneesList : {nomAnnee: string, nomMatiere: string}[] = JSON_Annees.map((value: any) => {
+        return {nomAnnee: value.nomAnnee, nomMatiere: value.nomMatiere};
         });
         this.setState({years: anneesList});
 
     }
-   
+ 
+ 
    
     render(): React.ReactNode {
         return (
@@ -69,20 +71,22 @@ export class Matiere extends React.Component<any, IStateMatiere>  {
                 <div>
                 <ul className="bloc_matiere_list">
                 {
-                    this.state.matieres.map((name) => (
-                        <li key={name} className="bloc_matiere_list_item">
-                            <BlocMatiere niveau = { name } links={
-                                this.state.years.map((year) => (
-                                    {link: ("./Matiere/" + name + "/" + year.idAnneeEsirem),
-                                    title: (name + " " + year.nom)}            
-                                ))                     
-                            }
-                            />
-                        </li>
-                    ))
+                    this.state.matieres.map((name) => {
+                        let filteredYears = this.state.years.filter(year => year.nomMatiere === name);
+                        return (
+                            <li key={name} className="bloc_matiere_list_item">
+                                <BlocMatiere niveau = { name } links={
+                                    filteredYears.map((year) => (
+                                        {link: ("./matiere/" + name ),
+                                        title: (year.nomMatiere + " " + year.nomAnnee)}            
+                                    ))                     
+                                }
+                                />
+                            </li>
+                        )
+                    })
                 }
                 </ul>
-
                 </div>
                 <Footer/>
             </main>
