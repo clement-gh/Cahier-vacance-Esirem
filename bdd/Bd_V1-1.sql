@@ -58,7 +58,7 @@ create table IF NOT EXISTS ExoLong (
     contenu json,
     difficulte int,
     idCorrection int,
-    idMatiere int
+    idRubrique int
 );
 
 create table IF NOT EXISTS Quizz (
@@ -66,14 +66,15 @@ create table IF NOT EXISTS Quizz (
     titreQuizz varchar(45),
     contenu json,
     difficulte int,
-    idMatiere int
+    idRubrique int
 );
 
 create table IF NOT EXISTS Cours (
 	idCours int primary key,
     titreCours varchar(45),
     contenu json,
-    idMatiere int
+    idRubrique int
+    
 );
 
 create table IF NOT EXISTS Matiere (
@@ -87,7 +88,8 @@ create table IF NOT EXISTS Rubrique (
     idCours int,
     idMatiere int,
     idQuizz int,
-    idExoLong int
+    idExoLong int,
+    nom varchar(45)
 );
 
 create table if not exists Correction (
@@ -210,7 +212,7 @@ INSERT INTO niveaudifficulté(difficulte)VALUES
 (2),
 (3);
 select * from niveaudifficulté;
-INSERT INTO exolong(idExoLong,titreExoLong,contenu,difficulte,idCorrection,idMatiere)VALUES
+INSERT INTO exolong(idExoLong,titreExoLong,contenu,difficulte,idCorrection,idRubrique)VALUES
 (1,"Exo1-Maths",'{"question": "4052 x 7786 = ?","proposition": [{"nom": "a", "details": "45 896 111"},{"nom": "b", "details": "17 558 214"},{"nom": "c", "details": "31 548 872"}]}',1,1,3),
 (2,"Exo2-Maths",'{"question": "1+4=?","proposition": [{"nom": "a", "details": "-5"},{"nom": "b", "details": "5"},{"nom": "c", "details": "1"}]}',2,2,3),
 (3,"Exo3-Maths",'{"question": "89-77=?","proposition": [{"nom": "a", "details": "12"},{"nom": "b", "details": "57"},{"nom": "c", "details": "66"}]}',3,3,3),
@@ -222,7 +224,7 @@ INSERT INTO exolong(idExoLong,titreExoLong,contenu,difficulte,idCorrection,idMat
 (9,"Exo3-Elec",'{"question": "Quesqu un transistor saturé ? ","proposition": [{"nom": "a", "details": "Element electronique permettant de réguler le courant, il est saturé quand il n est pas possible de faire passer plus de courant dans le collecteur du transistor"},{"nom": "b", "détail": "Element electronique permettant de réguler le courant, il est saturé quand le courant ne passe pas"},{"nom": "c", "details": "Element electronique permettant de réguler le courant, il est saturé quand il est utilisé en amplification et que le courant ne passe pas"}]}',3,9,2);
 select * from exolong;
 
-INSERT INTO cours(idCours,titreCours,contenu,idMatiere)VALUES
+INSERT INTO cours(idCours,titreCours,contenu,idRubrique)VALUES
 (1,"PID du script courant",'{"titre": "PID", "texte": "$$"}',1),
 (2,"PID du processus père du script",'{"titre": "PID", "texte": "$PPID"}',2),
 (3,"Code retour de la dernière commande",'{"titre": "Code retour", "texte": "$?"}',3);
@@ -244,7 +246,7 @@ select * from exolongeffectué;
 
 INSERT INTO matiere(idMatiere,nom,idAnneeEsirem)VALUES
 (1,"Info",1),
-(  2,"Info",2),
+(2,"Info",2),
 (3,"Info",3),
 (4,"Info",4),
 (5,"Info",5),
@@ -261,7 +263,7 @@ INSERT INTO matiere(idMatiere,nom,idAnneeEsirem)VALUES
 
 select * from matiere;
 
-INSERT INTO quizz(idQuizz,titreQuizz,contenu,difficulte,idMatiere)VALUES
+INSERT INTO quizz(idQuizz,titreQuizz,contenu,difficulte,idRubrique)VALUES
 (1,"quizz1-Maths",'{"question": "4052 x 7786 = ?","proposition": [{"nom": "a", "details": "45 896 111"},{"nom": "b", "details": "17 558 214"},{"nom": "c", "details": "31 548 872"}]}',1,3),
 (2,"quizz2-Maths",'{"question": "1+4=?","proposition": [{"nom": "a", "details": "-5"},{"nom": "b", "details": "5"},{"nom": "c", "details": "1"}]}',2,3),
 (3,"quizz3-Maths",'{"question": "89-77=?","proposition": [{"nom": "a", "details": "12"},{"nom": "b", "details": "57"},{"nom": "c", "details": "66"}]}',3,3),
@@ -280,10 +282,11 @@ INSERT INTO quizzeffectué(idUser,idQuizz,dateQuizz)VALUES
 (2,2,curdate());
 select * from quizzeffectué;
 
-INSERT INTO rubrique(idRubrique,idCours,idMatiere,idQuizz,idExoLong)VALUES
-(1,2,1,1,1),
-(2,1,2,5,5),
-(3,3,3,7,7);
+INSERT INTO rubrique(idRubrique,idCours,idMatiere,idQuizz,idExoLong,nom)VALUES
+(1,2,1,1,1,"R1"),
+(2,1,2,5,5,"R2"),
+(3,3,3,7,7,"R3");
+
 select * from rubrique;
 
 INSERT INTO succes(idSucces,nom,description)VALUES
@@ -299,6 +302,6 @@ INSERT INTO succeseffectues(idUser,idSucces,dateSucces)VALUES
 select * from succeseffectues;
 
 
-select idExoLong,titreExoLong,contenu,difficulte,matiere.nom,anneeesirem.nom from exolong inner join matiere on exolong.idMatiere = matiere.idMatiere inner join anneeesirem on matiere.idAnneeEsirem = anneeesirem.idAnneeEsirem;
+select idExoLong,titreExoLong,contenu,difficulte,matiere.nom,anneeesirem.nom from exolong inner join rubrique on exolong.idRubrique = rubrique.idRubrique inner join anneeesirem on matiere.idAnneeEsirem = anneeesirem.idAnneeEsirem;
  
 #drop schema Projet_Esirem;
