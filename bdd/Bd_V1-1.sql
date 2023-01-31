@@ -228,6 +228,9 @@ INSERT INTO cours(idCours,titreCours,contenu,idRubrique)VALUES
 (1,"PID du script courant",'{"titre": "PID", "texte": "$$"}',1),
 (2,"PID du processus père du script",'{"titre": "PID", "texte": "$PPID"}',2),
 (3,"Code retour de la dernière commande",'{"titre": "Code retour", "texte": "$?"}',3);
+
+INSERT INTO cours(idCours,titreCours,contenu,idRubrique)VALUES
+(4, "Intégration", '{"titre": "définitions", "texte": "Les intégrales sont utilisées dans de multiples disciplines scientifiques notamment en physique pour des opérations de mesure de grandeurs (longueur d''une courbe, aire, volume, flux) ou en probabilités. Ses utilités pluridisciplinaires en font un outil scientifique fondamentale. C''est la raison pour laquelle l''intégration est souvent abordée dès l''enseignement secondaire. <annotation>Le symbole mathématique représentant l''intégration, le « S long » , est appelé signe somme, signe d''intégration, signe intégral ou intégrateur. Il a été introduit par Leibniz pour noter l''intégrale.</annotation>"}', 4);
 select * from cours;
 
 INSERT INTO courslu(idUser,idCours,dateCoursLu)VALUES
