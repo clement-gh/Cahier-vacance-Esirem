@@ -6,7 +6,7 @@ import { Title } from "../components/title";
 import { TipsCourseType } from "../model/Course_page_models/tipsCourseModel";
 import { Course, loadCourse } from "../model/CourseLoader";
 
-const idCourseToLoad = [1, 2];
+const idCourseToLoad = [4, 2];
 
 type CoursProps = {
     courses: Course[],
@@ -34,7 +34,7 @@ export class Cours extends React.Component<any, CoursProps>{
                 <Title content="Cours"/>
                 {
                     this.state.courses.map((value) => {
-                        return <ParagraphCourse tipsType={TipsCourseType.WARNING} tipsContent=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec mi nulla. Etiam euismod tortor quis lorem porttitor dignissim. In et quam ipsum. Nulla facilisi. Morbi commodo tortor non urna consequat, in ullamcorper nunc aliquet." 
+                        return <ParagraphCourse tipsType={TipsCourseType.TIPS} tipsContent={value.annotation} 
                                  title={value.title} secondaryTitle={value.subTitle} 
                                  content={value.content}/>
                     })
