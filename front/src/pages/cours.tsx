@@ -6,37 +6,39 @@ import { Title } from "../components/title";
 import { TipsCourseType } from "../model/Course_page_models/tipsCourseModel";
 import { Course, loadCourse } from "../model/CourseLoader";
 
-const idCourseToLoad = [4, 2];
+const idCourseToLoad = 4;
 
 type CoursProps = {
-    courses: Course[],
+    course: Course,
 }
 
 export class Cours extends React.Component<any, CoursProps>{
     constructor(props: any) {
         super(props);
-        this.state ={courses: []};
+        this.state = { course: {
+            id: 0,
+            idRubrique: 0,
+            title: "loading",
+            paragraphs: [],
+        } };
     }
 
     async componentDidMount() {  
-        let c: Course[] = [];
-        for(let i = 0; i < idCourseToLoad.length; i++) {
-            let course: Course = await loadCourse(idCourseToLoad[i]);
-            c.push(course);
-        }
-        this.setState({courses: [...c]});
+        let course: Course = await loadCourse(idCourseToLoad);
+        this.setState({course});
     }
 
     render(): React.ReactNode {
         return (
             <main>
                 <NavBar/>
-                <Title content="Cours"/>
+                <Title content={this.state.course.title}/>
                 {
-                    this.state.courses.map((value) => {
-                        return <ParagraphCourse tipsType={TipsCourseType.TIPS} tipsContent={value.annotation} 
-                                 title={value.title} secondaryTitle={value.subTitle} 
-                                 content={value.content}/>
+                    this.state.course.paragraphs.map((value) => {
+                        return <ParagraphCourse tipsType={TipsCourseType.TIPS} 
+                            tipsContent={value.annotation} 
+                            title={value.title} secondaryTitle={value.subTitle} 
+                            content={value.content}/>
                     })
                 }
                 <Footer/>

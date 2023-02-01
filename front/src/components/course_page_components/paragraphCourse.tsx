@@ -15,7 +15,8 @@ export class ParagraphCourse extends React.Component<ParagraphCourseProps> {
 
         return (
             <div className="paragraph_course">
-                <TitleCourse content={this.props.title}/>
+                {this.props.title &&
+                <TitleCourse content={this.props.title}/>}
                 {this.props.secondaryTitle && //check if secondaryTitle is defined
                 <SecondaryTitleCourse content={this.props.secondaryTitle}/>}
                 <p className="paragraph_course_text">{this.props.content}</p>
