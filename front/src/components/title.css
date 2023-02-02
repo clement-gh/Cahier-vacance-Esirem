@@ -1,7 +1,8 @@
 .title_h1 {
     font-weight: 700;
-    font-size: 40px;
-    line-height: 52px;
+    font-size: 36px;
+    line-height: 49px;
     text-align: center;
-    text-decoration: underline;
+    text-decoration: none;
+    color: var(--main-color);
 }
