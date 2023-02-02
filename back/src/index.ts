@@ -36,7 +36,7 @@ server.get('/', function(request: FastifyRequest, reply: FastifyReply) {
     )
 })
 
-server.listen({ port: 80 }, (err:any, address:any) => {
+server.listen({ port: 4000 }, (err:any, address:any) => {
     if (err) throw err
     console.log(`server listening on ` + address)
   })

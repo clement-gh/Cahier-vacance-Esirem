@@ -10,7 +10,7 @@ export default async function routes (fastify : any, options : any) {
             };
         }>, reply:FastifyReply) => {
             fastify.mysql.query(
-                'SELECT nom FROM `rubrique` WHERE idMatiere= ?',request.params.idMatiere,
+                'SELECT idRubrique, nom FROM `rubrique` WHERE idMatiere= ?',request.params.idMatiere,
                 function onResult (err:any, result:any) {
                     reply.send(err || result)
                 }
@@ -26,7 +26,7 @@ export default async function routes (fastify : any, options : any) {
             };
         }>, reply:FastifyReply) => {
             fastify.mysql.query(
-                'SELECT * FROM  `rubrique` WHERE idMatiere= ?',request.params.idMatiere,
+                'SELECT r.idRubrique,e.idExoLong, e.titreExoLong, c.idCours,c.titreCours, q.idQuizz, q.titreQuizz FROM rubrique r LEFT JOIN exolong e ON r.idExoLong=e.idExoLong LEFT JOIN quizz q ON r.idQuizz=q.idQuizz LEFT JOIN cours c ON r.idCours=c.idCours WHERE idMatiere= ?;',request.params.idMatiere,
                 function onResult (err:any, result:any) {
                     reply.send(err || result)
                 }

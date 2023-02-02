@@ -310,3 +310,4 @@ select * from succeseffectues;
 select idExoLong,titreExoLong,contenu,difficulte,matiere.nom,anneeesirem.nom from exolong inner join rubrique on exolong.idRubrique = rubrique.idRubrique inner join anneeesirem on matiere.idAnneeEsirem = anneeesirem.idAnneeEsirem;
  
 #drop schema Projet_Esirem;
+

@@ -58,12 +58,15 @@ export class Matiere extends React.Component<any, IStateMatiere>  {
         return {nomAnnee: value.nomAnnee, nomMatiere: value.nomMatiere , idMatiere : value.idMatiere};
         });
         this.setState({years: anneesList});
+        console.log(this.state.years)
+        console.log(anneesList);
 
     }
  
  
    
     render(): React.ReactNode {
+        console.log(this.state.years);
         return (
             <main className="page_matiere">
                 <NavBar/>
@@ -76,6 +79,7 @@ export class Matiere extends React.Component<any, IStateMatiere>  {
                         return (
                             <li key={name} className="bloc_matiere_list_item">
                                 <BlocMatiere niveau = { name } links={
+                                    
                                     filteredYears.map((year) => (
                                         {link: ("/" + year.nomMatiere + year.nomAnnee + "/" + year.idMatiere),
                                         title: (year.nomMatiere + " " + year.nomAnnee)}            
