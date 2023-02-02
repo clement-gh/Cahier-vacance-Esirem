@@ -5,23 +5,30 @@ import { NavBar } from "../components/navbar";
 import { Title } from "../components/title";
 import "./annee.css";
 
+type Rubrik = {
+    idRubrique:number,
+    idExoLong:number, 
+    titreExolong:string, 
+    idCours:number, 
+    titreCours:string, 
+    idQuizz:number, 
+    titreQuizz:string
+}
+
 // La page année affiche une liste de rubriques et de cours correspondant à l'année et à la matière sélectionnée
 interface IStateAnnee {
-  names : {id:number, nom:string}[]
-   rubrik: {idRubrique:number,idExoLong:number, titreExolong:string, idCours:number, titreCours:string,idQuizz:number,titreQuizz:string}[]
+    names : {id:number, nom:string}[]
+    rubriks: Rubrik[],
 }
 export class Annee extends React.Component<any,IStateAnnee> {
     constructor(props: any) {
         super(props);
        
         this.state = {    
-            rubrik : [],
+            rubriks : [],
             names: [],
         };
     }
-
-
-   
 
     async componentDidMount() { 
         let dir : string = window.location.pathname;    
@@ -45,9 +52,8 @@ export class Annee extends React.Component<any,IStateAnnee> {
         let rubriquesList : {id: number, nom: string}[] = JSON_Rubriques.map((value: any) => {
             return {id: value.id, nom: value.nom};
         });
-        this.setState({names: rubriquesList});
         
-        let JSON_Rubrik : {idRubrique:number,idExoLong:number, titreExolong:string, idCours:number, titreCours:string,idQuizz:number,titreQuizz:string}[] = [];
+        let JSON_Rubrik : Rubrik[] = [];
         let response2 = await fetch('http://[::1]:4000/rubrique/'+dir);
         if(response2.status === 200) {
             try {
@@ -60,43 +66,49 @@ export class Annee extends React.Component<any,IStateAnnee> {
         else {
             console.log("FETCH ERROR");
         }
-        let rubriks:{idRubrique:number,idExoLong:number, titreExolong:string, idCours:number, titreCours:string,idQuizz:number,titreQuizz:string}[] = JSON_Rubrik.map((value: any) => {
-            return{ idRubrique:value.idRubrique,idExoLong:value.idExoLong, titreExolong:value.titreExolong, idCours:value.idCours, titreCours:value.titreCours,idQuizz:value.idQuizz,titreQuizz:value.titreQuizz};
+        let rubriks: Rubrik[] = JSON_Rubrik.map((value: any) => {
+            return{ 
+                idRubrique:     value.idRubrique,
+                idExoLong:      value.idExoLong, 
+                titreExolong:   value.titreExoLong,
+                idCours:        value.idCours, 
+                titreCours:     value.titreCours,
+                idQuizz:        value.idQuizz,
+                titreQuizz:     value.titreQuizz
+                };
         });
       
       
-        this.setState({rubrik: rubriks});
-        
-
-        
-       
+        this.setState({
+            names: rubriquesList,
+            rubriks: rubriks
+        });       
     }
 
     render(): React.ReactNode {
-    console.log(this.state.rubrik);
         return (
             <main>
                 <NavBar/>
+                <Title content="Rubrique"/>
                 <div>
-                <ul className="bloc_matiere_list">
-              
-                {
-                    this.state.names.map((name) => {
-                        let filteredYears = this.state.rubrik.filter(rub => rub.idRubrique === name.id);
-
-                        return (
-                            <li key={name.nom} className="bloc_matiere_list_item">
-                                <BlocMatiere niveau = { name.nom } 
-
-                                />
-                            </li>
-                        )
-                    })
-                }
-                </ul>
-
+                    <ul className="bloc_matiere_list">              
+                    {
+                        this.state.rubriks.map((rubrik, index) => {
+                            return (
+                                <li key={rubrik.idCours} className="bloc_matiere_list_item">
+                                    <BlocMatiere niveau = { this.state.names[index].nom } 
+                                    links={[
+                                        {title: rubrik.titreCours , link:"/Cours/" + rubrik.idCours},
+                                        {title: rubrik.titreExolong, link:"/ExoLong/" + rubrik.idExoLong},
+                                        {title: rubrik.titreQuizz, link:"/Quizz/" + rubrik.idQuizz},
+                                    ]}
+                                    />
+                                </li>
+                            )
+                        })
+                    }
+                    </ul>
                 </div>
-
                 <Footer/>
             </main>
         );
