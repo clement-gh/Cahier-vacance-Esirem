@@ -15,7 +15,7 @@ export class Inscription extends React.Component {
             <div className="inscription">
                 <NavBar/>
                 <Title content="Inscription"/>
-                <div className="inscription_form">
+                <div className="inscription_div">
                     <form className="form_signup">
                         <Input label="Nom"/>
                         <Input label="Prénom"/>
@@ -36,8 +36,7 @@ export class Inscription extends React.Component {
                             {name: "Autre"},
                         ]}/>
                         <Button content="Envoyer"/>
-                    </form>
-                        
+                    </form>                        
                 </div>
             </div>
             <Footer/>

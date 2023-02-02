@@ -3,6 +3,9 @@ import "./connexion.css";
 
 import { NavBar } from "../components/navbar";
 import { Title } from "../components/title";
+import { Footer } from "../components/footer";
+import { Input } from "../components/form/input";
+import { Button } from "../components/button";
 export class Connexion extends React.Component {
     render(): React.ReactNode {
         return (
@@ -10,15 +13,11 @@ export class Connexion extends React.Component {
                 <div className="connexion"> 
                     <NavBar/>
                     <Title content="Connexion"/>    
-                    <div className="connexion_form">
-                        <form>
-                            <label>
-                                <input type="text" name="name" placeholder="Nom d'utilisateur" />
-                            </label>    
-                            <label>
-                                <input type="password" name="password" placeholder="Mot de passe" />
-                            </label>
-                            <input type="submit" value="Se connecter" />
+                    <div className="connexion_div">
+                        <form className="connexion_form">
+                            <Input label="Nom"/>
+                            <Input label="mot de passe" type="password"/>
+                            <Button content="Se connecter"/>
                         </form>
                     </div>
 
@@ -27,6 +26,7 @@ export class Connexion extends React.Component {
                         <a href="./inscription">Pas encore inscrit ?</a>
                     </div>
                 </div>
+                <Footer/>
             </main>
         );
     }
