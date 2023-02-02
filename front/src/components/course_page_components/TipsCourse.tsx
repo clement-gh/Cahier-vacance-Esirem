@@ -18,7 +18,7 @@ export class TipsCourse extends React.Component<TipsCourseProps> {
                 <p className="tips_course_title">{title}</p>
                 <div className="tips_course_emplacement">
                     <div className={"tips_course_circle " + classNameBackgroundColor}>
-                        <img className="tips_course_icon" alt="tips_icon" src="./images/course_page_icon/undraw_Notify_re_65on.png"></img>
+                        <img className="tips_course_icon" alt="tips_icon" src="/images/course_page_icon/undraw_Notify_re_65on.png"></img>
                     </div>                    
                     <div className={"tips_course_rectangle " + classNameBackgroundColor}>
                         <p className="tips_course_text">{this.props.content}</p>

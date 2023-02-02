@@ -6,8 +6,6 @@ import { Title } from "../components/title";
 import { TipsCourseType } from "../model/Course_page_models/tipsCourseModel";
 import { Course, loadCourse } from "../model/CourseLoader";
 
-const idCourseToLoad = 4;
-
 type CoursProps = {
     course: Course,
 }
@@ -23,8 +21,9 @@ export class Cours extends React.Component<any, CoursProps>{
         } };
     }
 
-    async componentDidMount() {  
-        let course: Course = await loadCourse(idCourseToLoad);
+    async componentDidMount() { 
+        let id =  window.location.pathname.split("/")[2]; //get id of the page. probably a bad idea of doing it like that.   
+        let course: Course = await loadCourse(id);
         this.setState({course});
     }
 

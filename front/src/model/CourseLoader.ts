@@ -13,7 +13,7 @@ export type Paragraph = {
 }
 
 //function to load a course with his id
-export async function loadCourse(id: number): Promise<Course> {
+export async function loadCourse(id: number | string): Promise<Course> {
     let response = await fetch('http://[::1]:4000/cours/' + id);
     let principal = await response.json();
     let secondary = JSON.parse(principal.contenu);
