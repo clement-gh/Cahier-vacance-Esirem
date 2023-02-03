@@ -19,6 +19,7 @@ type Rubrik = {
 interface IStateAnnee {
     names : {id:number, nom:string}[]
     rubriks: Rubrik[],
+    
 }
 export class Annee extends React.Component<any,IStateAnnee> {
     constructor(props: any) {
@@ -27,6 +28,7 @@ export class Annee extends React.Component<any,IStateAnnee> {
         this.state = {    
             rubriks : [],
             names: [],
+         
         };
     }
 
@@ -84,8 +86,15 @@ export class Annee extends React.Component<any,IStateAnnee> {
             rubriks: rubriks
         });       
     }
+    
+
+  
+    
+
+
 
     render(): React.ReactNode {
+       
         return (
             <main>
                 <NavBar/>
@@ -94,17 +103,36 @@ export class Annee extends React.Component<any,IStateAnnee> {
                     <ul className="bloc_matiere_list">              
                     {
                         this.state.rubriks.map((rubrik, index) => {
+                            
+                            let links = [];
+                            if (rubrik.idCours) {
+                              links.push({
+                                title: rubrik.titreCours,
+                                link: "/Cours/" + rubrik.idCours
+                              });
+                            }
+                            if (rubrik.idExoLong) {
+                              links.push({
+                                title: rubrik.titreExolong,
+                                link: "/ExoLong/" + rubrik.idExoLong
+                              });
+                            }
+                            if (rubrik.idQuizz) {
+                              links.push({
+                                title: rubrik.titreQuizz,
+                                link: "/Quizz/" + rubrik.idQuizz
+                              });
+                            }
                             return (
-                                <li key={rubrik.idCours} className="bloc_matiere_list_item">
-                                    <BlocMatiere niveau = { this.state.names[index].nom } 
-                                    links={[
-                                        {title: rubrik.titreCours , link:"/Cours/" + rubrik.idCours},
-                                        {title: rubrik.titreExolong, link:"/ExoLong/" + rubrik.idExoLong},
-                                        {title: rubrik.titreQuizz, link:"/Quizz/" + rubrik.idQuizz},
-                                    ]}
-                                    />
-                                </li>
-                            )
+                              <li key={rubrik.idCours} className="bloc_matiere_list_item">
+                                <BlocMatiere
+                                  niveau={this.state.names[index].nom}
+                                  links={links}
+                                />
+                              </li>
+                            );
+
+                          
                         })
                     }
                     </ul>

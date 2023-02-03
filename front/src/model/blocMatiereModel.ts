@@ -4,11 +4,12 @@ export type BlocMatiereState = {
 
 export type BlocMatiereProps = {
     niveau: string,
-    links?: BlocMatiereLink[],   //sera probablement chargé avec une requête au serveur
+    links?: BlocMatiereLink[]  ,   //sera probablement chargé avec une requête au serveur
 };
 
 //liste des liens sous le niveau.
 export type BlocMatiereLink = {
-    link: string,
-    title: string,
+    link: string | undefined ,
+    title: string , 
+    
 };
