@@ -53,16 +53,16 @@ export function extractStringBetweenBorn(origin: string, born1: string, born2: s
 }
 
     //function who extract a multiple substring between two born
-export function extractStringsBetweenBorn(origin: string, born1: string) : string[] | undefined {
-    let str = "<borne>(.*?)<\/borne>";
-    str = str.replaceAll("borne", born1);
-    const regex = new RegExp(str, 'g');
-    const matches = [];
-    let match;
-
-    while ((match = regex.exec(origin)) !== null) {
-        matches.push(match[1]);
-    }
-    return matches ? matches : undefined;
-
-}   
+    export function extractStringsBetweenBorn(origin: string, born1: string) : string[] | undefined {
+        let str = "<borne>(.*?)<\/borne>";
+        str = str.replaceAll("borne", born1);
+        const regex = new RegExp(str, 'g');
+        const matches = [];
+        let match;
+    
+        while ((match = regex.exec(origin)) !== null) {
+            matches.push(match[1]);
+        }
+        return matches ? matches : undefined;
+    
+    } 

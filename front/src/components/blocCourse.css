@@ -55,12 +55,12 @@
     opacity: 0;
     transition: opacity 0.3s linear;
     bottom: 31%;
-    }
+}
 
 .bloc_course:hover .bloc_course_title {
     opacity: 1;
     transition: opacity 0.3s linear;
-}
+}    
 
 @media ( width < 600px) {
     .bloc_course_icon {
@@ -69,10 +69,6 @@
         width: 30%;
         border-radius: 50%;
         background-color: var(--main-color);
-    }
-
-    .bloc_course_title{
-        font-size: 100%;
     }
     
 }

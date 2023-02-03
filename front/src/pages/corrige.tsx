@@ -1,6 +1,6 @@
 import React from "react";
 import { Footer } from "../components/footer";
-import { ParagraphExercice } from "../components/course_page_components/paragraphExercice"; 
+import { ParagraphCorrige } from "../components/course_page_components/paragraphCorrige";
 import { TipsCourseType } from "../model/Course_page_models/tipsCourseModel";
 import { NavBar } from "../components/navbar";
 import { Title } from "../components/title";
@@ -35,7 +35,7 @@ export class Corrige extends React.Component<any, CorrigeProps> {
                 <Title content={this.state.corriger.title}/>
                 {
                     this.state.corriger.content.map((value) => {
-                        return <ParagraphExercice tipsType={TipsCourseType.TIPS} 
+                        return <ParagraphCorrige tipsType={TipsCourseType.TIPS} 
                             tipsContent={value.annotation} 
                             title={value.title} secondaryTitle={value.subTitle} 
                             content={value.content}

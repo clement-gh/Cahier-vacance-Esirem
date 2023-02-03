@@ -23,7 +23,7 @@
     list-style: none;
 }
 
-.navbar_list_item {
+navbar_list_item {
     display: flex;
 
     padding: 0 10px;
@@ -40,7 +40,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0 10px;
 }
+
+
 
 
 
