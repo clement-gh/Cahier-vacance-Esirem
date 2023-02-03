@@ -10,6 +10,7 @@ export class TipsCourse extends React.Component<TipsCourseProps> {
             case TipsCourseType.TIPS:    title = "Annecdote / Conseil"; classNameBackgroundColor+="blue"; break;
             case TipsCourseType.WARNING: title = "Attention !"; classNameBackgroundColor+="yellow";       break;
             case TipsCourseType.ERROR:   title = "Pas exactement..."; classNameBackgroundColor+="red";    break;
+            case TipsCourseType.CORRECT:   title = "Correct ! "; classNameBackgroundColor+="green";    break;
             default: console.log("unimplemented TipsCourseType")
         }
 

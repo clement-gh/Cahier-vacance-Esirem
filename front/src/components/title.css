@@ -3,5 +3,6 @@
     font-size: 40px;
     line-height: 52px;
     text-align: center;
-    text-decoration: underline;
+    color: var(--third-color);
+    font-family: "Open Sans";
 }

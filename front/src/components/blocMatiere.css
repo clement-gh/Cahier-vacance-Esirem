@@ -15,7 +15,7 @@
 }
 
 .bloc_matiere_dark {
-    background-color: #005795;
+    background-color: var(--third-color);
 }
 
 .bloc_matiere_text {
