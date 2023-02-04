@@ -1,0 +1,28 @@
+.Button{
+    display: inline-block;
+    background-color: var(--main-color);
+    color: #fff;
+    font-size: 1.5em;
+    font-family: "Kodchasan", sans-serif;
+    padding: 1em 2em;
+    text-decoration: none;
+    border-radius: 1em;
+    border-bottom: 0.35em solid var(--third-color);
+    -moz-transition: 0.1s;
+    -webkit-transition: 0.1s;
+    transition: 0.1s;
+    box-shadow: 0 2px 3px gray;
+    margin : 0 0 10px 0;
+    
+}
+
+.Button:hover{
+    background-color: var(--third-color);
+    border-bottom: 0.35em solid #002A47;
+}
+
+.Button:active{
+    background-color: var(--main-color);
+    border-bottom-width: 0;
+    margin-top: 0.2em;
+}

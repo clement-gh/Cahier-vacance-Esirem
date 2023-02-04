@@ -1,11 +1,15 @@
 /*Global css*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kodchasan&display=swap');
 html {
     --main-color: #009EE2;
     --second-color: #C6C6C6;
+    --third-color : #005794;
 }
 
 body {
     margin: 0;
+    font-family: "Open Sans";
 }
 
 /* Scrollbar for Firefox */

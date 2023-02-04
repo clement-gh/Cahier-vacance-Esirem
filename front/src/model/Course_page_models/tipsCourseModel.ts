@@ -4,5 +4,5 @@ export type TipsCourseProps = {
 }
 
 export enum TipsCourseType {
-    TIPS, WARNING, ERROR,
+    TIPS, WARNING, ERROR, CORRECT,
 }

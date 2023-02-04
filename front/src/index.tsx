@@ -10,6 +10,8 @@ import { Connexion } from "./pages/connexion";
 import { Inscription } from "./pages/inscription";
 import {Annee} from "./pages/annee";
 import { Quiz } from "./pages/quiz";
+import { ExerciceL } from "./pages/exerciceL"
+import { Corrige } from "./pages/corrige";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -24,6 +26,8 @@ root.render(
       <Route path="/inscription" element={<Inscription/>} />
       <Route path="/:nom/:idMatiere" element={<Annee/>}/>
       <Route path="/quiz/:idQuiz" element={<Quiz/>}/>
+      <Route path="/ExoLong/:id" element={<ExerciceL/>}/>
+      <Route path="/corrige/:id" element={<Corrige/>}/>
       
       <Route path="*" element={<NoPage />} />
     </Routes>
