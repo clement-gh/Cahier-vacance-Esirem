@@ -23,7 +23,7 @@
     list-style: none;
 }
 
-.navbar_list_item {
+navbar_list_item {
     display: flex;
 
     padding: 0 10px;
@@ -36,7 +36,14 @@
     font-size: 32px;
     font-weight: 400;
     line-height: 41.6px;
+    font-family: 'Kodchasan';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
 }
+
+
 
 
 

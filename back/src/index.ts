@@ -9,6 +9,7 @@ import exoLongImp from './exolong';
 import anneeImp from './annee';
 import matiereImp from './matiere';
 import rubriqueImp from './rubrique';
+import corrigeImp from './corrige';
 
 const server = require('fastify')()
 
@@ -24,6 +25,7 @@ server.register(exoLongImp);
 server.register(anneeImp);
 server.register(matiereImp);
 server.register(rubriqueImp);
+server.register(corrigeImp);
 
 server.get('/', function(request: FastifyRequest, reply: FastifyReply) {
 

@@ -1,0 +1,24 @@
+.paragraph_Exercice{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.Enonce{
+    flex: 50%;
+}
+
+.image_Exercice{
+    margin-left: auto;
+    max-width: 40%;
+    flex: 50%;
+}
+
+.Enonce > p{
+    margin: 2%;
+    text-align: justify;
+}
+
+.paragraph_question_text{
+    font-weight: bolder;
+}
