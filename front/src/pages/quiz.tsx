@@ -32,7 +32,7 @@ export class Quiz extends React.Component<any, QuizProps>{
             return {
                 type: PropositionsType.ONE_RIGHT_ANSWER,
                 content: value.details,
-                name: value.nom,
+                name: contenu.question,
             }
         });
         let props: QuizProps = {blocs: [{
