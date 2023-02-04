@@ -34,7 +34,7 @@ export class Annee extends React.Component<any,IStateAnnee> {
 
     async componentDidMount() { 
         let dir : string = window.location.pathname;    
-         dir = dir.split("/")[2];
+        dir = dir.split("/")[2];
         
         let JSON_Rubriques : {id:number, nom:string}[] = [];
 
@@ -86,12 +86,6 @@ export class Annee extends React.Component<any,IStateAnnee> {
             rubriks: rubriks
         });       
     }
-    
-
-  
-    
-
-
 
     render(): React.ReactNode {
        
@@ -120,7 +114,7 @@ export class Annee extends React.Component<any,IStateAnnee> {
                             if (rubrik.idQuizz) {
                               links.push({
                                 title: rubrik.titreQuizz,
-                                link: "/Quizz/" + rubrik.idQuizz
+                                link: "/Quiz/" + rubrik.idQuizz
                               });
                             }
                             return (

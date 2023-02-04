@@ -2,7 +2,6 @@ import React from "react";
 import { BlocQuiz } from "../components/blocQuiz";
 import { Footer } from "../components/footer";
 import { NavBar } from "../components/navbar";
-import { Propositions } from "../components/quiz_page_components/propositions";
 import { Title } from "../components/title";
 import { QuizProps } from "../model/blocQuizProps";
 import { PropositionsType } from "../model/Quiz_page_models/propositionsModel";
