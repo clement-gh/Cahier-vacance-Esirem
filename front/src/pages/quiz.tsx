@@ -7,8 +7,6 @@ import { Title } from "../components/title";
 import { QuizProps } from "../model/blocQuizProps";
 import { PropositionsType } from "../model/Quiz_page_models/propositionsModel";
 
-const id = 1;
-
 export class Quiz extends React.Component<any, QuizProps>{
 
     constructor(Props: any){
@@ -22,26 +20,28 @@ export class Quiz extends React.Component<any, QuizProps>{
     }
 
     async componentDidMount(){
+        let path = window.location.pathname.split("/");
+        let id = path[path.length - 1];
         let response = await fetch("http://[::1]:4000/quizz/" + id);
         let quizJson = await response.json();
-        console.log(quizJson);
         let contenu = JSON.parse(quizJson.contenu);
+        let proposition: { nom: string, details: string }[] = contenu.proposition;
         console.log(contenu);
+        console.log(proposition);
 
+        let answers = proposition.map((value) => {
+            return {
+                type: PropositionsType.ONE_RIGHT_ANSWER,
+                content: value.details,
+                name: value.nom,
+            }
+        });
         let props: QuizProps = {blocs: [{
-            answers: [],
-            question: contenu.question
-        }]}
-
-        // contenu.proposition.map((value)=>{
-        //     return value.
-        // })
-
-        // for(let i = 0; i < ((PropositionsProps[])contenu.proposition).length; i++)
-        // {
-        //     props.blocs[0].answers = contenu.proposition[i];
-        // }
-        // console.log(props)
+            question: {content: contenu.question},
+            answers: answers,
+        }]};
+        console.log(props);
+        this.setState(props);        
     }
    
    
