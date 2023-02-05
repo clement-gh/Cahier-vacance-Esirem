@@ -1,0 +1,17 @@
+.quiz_page_div {
+    margin: 17px;
+    display: flex;
+    justify-content: center;
+}
+
+.quiz_page_container_bloc_quiz {
+    flex: 2;
+}
+
+.quiz_page_img_div {
+    flex: 1;
+}
+
+.quizz_page_img {
+    max-width: 100%;
+}

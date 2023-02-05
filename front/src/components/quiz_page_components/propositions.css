@@ -1,0 +1,16 @@
+.propositions {
+    margin: 25px 0 0 10px;
+}
+
+.propositions_radio_label {
+    font-family: Open Sans;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.propositions_radio_input {
+    margin-right: 7%;
+    height: 15px;
+    width: 14px;
+}

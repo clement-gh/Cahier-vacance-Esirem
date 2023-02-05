@@ -3,6 +3,7 @@ import { PropositionsProps } from "./Quiz_page_models/propositionsModel"
 import { QuestionProps } from "./Quiz_page_models/questionModel"
 
 export type QuizProps = {
+    title: string,
     blocs: BlocQuizProps[]
 }
 

@@ -5,17 +5,13 @@ import { NavBar } from "../components/navbar";
 import { Title } from "../components/title";
 import { QuizProps } from "../model/blocQuizProps";
 import { PropositionsType } from "../model/Quiz_page_models/propositionsModel";
+import "./quiz.css"
 
 export class Quiz extends React.Component<any, QuizProps>{
 
     constructor(Props: any){
         super(Props);
-        this.state = {blocs: [{
-            question: {content: "En quelle année sommes-nous ?"},
-            answers: [{type: PropositionsType.ONE_RIGHT_ANSWER,
-                content: "string",
-                name: "string"}]
-        }]}
+        this.state = {title: "Loading...",blocs: []}
     }
 
     async componentDidMount(){
@@ -25,8 +21,6 @@ export class Quiz extends React.Component<any, QuizProps>{
         let quizJson = await response.json();
         let contenu = JSON.parse(quizJson.contenu);
         let proposition: { nom: string, details: string }[] = contenu.proposition;
-        console.log(contenu);
-        console.log(proposition);
 
         let answers = proposition.map((value) => {
             return {
@@ -35,11 +29,13 @@ export class Quiz extends React.Component<any, QuizProps>{
                 name: contenu.question,
             }
         });
-        let props: QuizProps = {blocs: [{
-            question: {content: contenu.question},
-            answers: answers,
-        }]};
-        console.log(props);
+        let props: QuizProps = {
+            title: quizJson.titreQuizz,
+            blocs: [{
+                question: {content: contenu.question},
+                answers: answers,
+            }]
+        };
         this.setState(props);        
     }
    
@@ -49,14 +45,19 @@ export class Quiz extends React.Component<any, QuizProps>{
         return (
             <main className="quiz">
                 <NavBar/>
-                <Title content="Quiz"/>
-                    <div>
-                        {
-                            this.state.blocs.map((value)=>{
-                                return <BlocQuiz question={value.question} answers={value.answers}></BlocQuiz>
-                            })
-                        }
-                    </div>      
+                <Title content={this.state.title}/>
+                <div className="quiz_page_div">
+                    <div className="quiz_page_container_bloc_quiz">
+                    {
+                        this.state.blocs.map((value)=>{
+                            return <BlocQuiz question={value.question} answers={value.answers}></BlocQuiz>
+                        })
+                    }
+                    </div>    
+                    <div className="quiz_page_img_div">
+                        <img className="quizz_page_img" src="/images/background_maths.png"></img>
+                    </div>  
+                </div>
                 <Footer/>
             </main>
         );

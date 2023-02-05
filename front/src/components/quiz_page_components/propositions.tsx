@@ -4,8 +4,8 @@ import "./propositions.css"
 
 export class Propositions extends React.Component<PropositionsProps> {
     render(): React.ReactNode {
+        //TODO : Implement multi answers quizz
         let nbRightAnwser;
-        //let classNameBackgroundColor : string = "tips_course_bordercolor_"; 
         switch(this.props.type) {
             case PropositionsType.ONE_RIGHT_ANSWER: nbRightAnwser = "1"; break;
             default: console.log("unimplemented TipsCourseType")
@@ -13,8 +13,8 @@ export class Propositions extends React.Component<PropositionsProps> {
 
         return (
             <div className="propositions">
-                <input type="radio" name={this.props.name}/>
-                <span className="radiobox_span">{this.props.content}</span>
+                <input className="propositions_radio_input" type="radio" name={this.props.name}/>
+                <span className="propositions_radio_label">{this.props.content}</span>
             </div>
         );
     }

@@ -5,7 +5,7 @@ import "./question.css"
 export class Question extends React.Component<QuestionProps> {
     render(): React.ReactNode {
         return (
-            <h3 className="question">{this.props.content}</h3>
+            <p className="question">{this.props.content}</p>
         );
     }
 }
