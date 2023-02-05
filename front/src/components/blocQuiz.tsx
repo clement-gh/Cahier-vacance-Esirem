@@ -2,7 +2,6 @@ import React from "react";
 import { BlocQuizProps } from "../model/blocQuizProps";
 import { Propositions } from "./quiz_page_components/propositions";
 import { Question } from "./quiz_page_components/question";
-import "./blocQuiz.css"
 
 export class BlocQuiz  extends React.Component <BlocQuizProps>  {
   
