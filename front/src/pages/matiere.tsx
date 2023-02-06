@@ -70,7 +70,7 @@ export class Matiere extends React.Component<any, IStateMatiere>  {
         return (
             <main className="page_matiere">
                 <NavBar/>
-                <Title content="Titre principale"/>
+                <Title content="Matières"/>
                 <div>
                 <ul className="bloc_matiere_list">
                 {
