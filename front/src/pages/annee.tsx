@@ -92,7 +92,7 @@ export class Annee extends React.Component<any,IStateAnnee> {
         return (
             <main>
                 <NavBar/>
-                <Title content="Rubrique"/>
+                <Title content="Rubriques"/>
                 <div>
                     <ul className="bloc_matiere_list">              
                     {
