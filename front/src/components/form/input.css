@@ -3,6 +3,7 @@
     flex-direction: row;
     width: 90%;
     margin-bottom: 26px;
+    align-items: center;
 }
 
 .input_label {

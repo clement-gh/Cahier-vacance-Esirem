@@ -1,0 +1,10 @@
+.tips_course_textarea {
+    margin: 5px 3% auto 13%;
+    width: 100%;
+    height: 80%;
+    background-color: transparent;
+}
+
+.tips_course_emplacement {
+    z-index: 0;
+}

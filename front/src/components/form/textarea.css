@@ -1,0 +1,19 @@
+.textarea_div {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0 20px 0;
+}
+
+.textarea_label {
+    margin-bottom: 10px;
+    text-align: justify;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 400;
+}
+
+.textarea_input {
+    background-color: var(--second-color);
+    border-radius: 15px;
+    border: none;
+}

@@ -1,0 +1,12 @@
+.create_cours_inputs {
+    margin: 0 5% 0 5%;
+}
+.create_cours_titre_cours {
+    width: 300px;
+}
+.create_cours_p {
+    text-align: justify;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 400;
+}

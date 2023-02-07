@@ -12,6 +12,7 @@ import {Annee} from "./pages/annee";
 import { Quiz } from "./pages/quiz";
 import { ExerciceL } from "./pages/exerciceL"
 import { Corrige } from "./pages/corrige";
+import { CreateCoursPage } from "./pages/backoffice/create_cours_page";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -29,6 +30,7 @@ root.render(
       <Route path="/ExoLong/:id" element={<ExerciceL/>}/>
       <Route path="/corrige/:id" element={<Corrige/>}/>
       
+      <Route path="/backoffice/creation_cours" element={<CreateCoursPage/>}></Route>
       <Route path="*" element={<NoPage />} />
     </Routes>
   </BrowserRouter>
