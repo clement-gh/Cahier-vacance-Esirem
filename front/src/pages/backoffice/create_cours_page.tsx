@@ -9,8 +9,44 @@ import { TipsCourseModifiable } from "../../components/course_page_components/co
 import { NavBar } from "../../components/navbar";
 import { Footer } from "../../components/footer";
 
-export class CreateCoursPage extends React.Component {
+type CreateCoursPageState = {
+    hasAnnotation: boolean,
+    tipsCourseType : TipsCourseType,
+}
 
+export class CreateCoursPage extends React.Component<any, CreateCoursPageState> {
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            hasAnnotation: false,
+            tipsCourseType: TipsCourseType.CORRECT,
+        }
+    }
+
+    changeState(): void {
+        let optionslist : any= document.getElementsByName("annotationType")[0];
+        let value: string = optionslist.options[optionslist.selectedIndex].value;
+        let type: TipsCourseType | undefined = undefined;
+        switch(value) {
+            case "TIPS": type = TipsCourseType.TIPS; break;
+            case "CORRECT": type = TipsCourseType.CORRECT; break;
+            case "WARNING": type = TipsCourseType.WARNING; break;
+            case "ERROR": type = TipsCourseType.ERROR; break;
+        }
+
+        if(type !== undefined) {            
+            this.setState({
+                hasAnnotation: true,
+                tipsCourseType: type,
+            });
+        }
+        else {            
+            this.setState({
+                hasAnnotation: false,
+                tipsCourseType: TipsCourseType.CORRECT,
+            });
+        }
+    }
 
     render(): React.ReactNode {
         return (
@@ -32,8 +68,9 @@ export class CreateCoursPage extends React.Component {
                                 {content: "WARNING", value: "WARNING"},
                                 {content: "ERROR",   value: "ERROR"},
                             ]}
+                            func={() => { this.changeState() }}
                         />
-                        <TipsCourseModifiable type={TipsCourseType.WARNING} content="zdzd"/>                        
+                        {this.state.hasAnnotation && <TipsCourseModifiable type={this.state.tipsCourseType} content="zdzd"/>   }                     
                     </div>
                 </div>
                 <Footer/>
