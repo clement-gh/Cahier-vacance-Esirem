@@ -1,0 +1,27 @@
+.create_cours_paragraph {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.create_cours_paragraph_inputs {
+    flex: 1;
+}
+
+.create_cours_paragraph_delete {
+    max-width: 50px;
+    border-radius: 15px;
+    box-shadow: 5px 3px 3px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create_cours_paragraph_delete_char {
+    z-index: 100;
+    display:inline-block;   
+    font-size: 60px;
+    text-align: start;
+    vertical-align: middle;
+    color: black;
+    font-weight: 700;
+}
