@@ -1,9 +1,10 @@
 import React from "react";
-import { TipsCourseProps, TipsCourseType } from "../../../model/Course_page_models/tipsCourseModel";
+import { TipsCourseModifiableProps, TipsCourseType } from "../../../model/Course_page_models/tipsCourseModel";
 import "../tipsCourse.css"
 import "./TipsCourseModifiable.css"
 
-export class TipsCourseModifiable extends React.Component<TipsCourseProps> {
+
+export class TipsCourseModifiable extends React.Component<TipsCourseModifiableProps> {
     render(): React.ReactNode {
         let title: string = "";
         let classNameBackgroundColor : string = "tips_course_bordercolor_"; 
@@ -23,7 +24,7 @@ export class TipsCourseModifiable extends React.Component<TipsCourseProps> {
                         <img className="tips_course_icon" alt="tips_icon" src="/images/course_page_icon/undraw_Notify_re_65on.png"></img>
                     </div>                    
                     <div className={"tips_course_rectangle " + classNameBackgroundColor}>
-                        <textarea name="tips_textarea" className="tips_course_textarea"></textarea>
+                        <textarea id={"tips_textareaID" + this.props.id} name="tips_textarea" className="tips_course_textarea"></textarea>
                     </div>
                 </div>
             </div>

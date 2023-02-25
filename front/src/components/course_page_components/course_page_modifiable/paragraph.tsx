@@ -3,7 +3,7 @@ import { TextArea } from "../../form/textarea";
 import { OptionsList } from "../../form/optionsList";
 import { ParagraphModel } from "../../../model/backoffice/create_cours_page_models";
 import { TipsCourseModifiable } from "./TipsCourseModifiable";
-import { TipsCourseType } from "../../../model/Course_page_models/tipsCourseModel";
+import { TipsCourseType, stringToTipsCourseType } from "../../../model/Course_page_models/tipsCourseModel";
 import "./paragraph.css"
 
 
@@ -24,14 +24,7 @@ export class Paragraph extends React.Component<ParagraphProps, ParagraphModel> {
     changeState(): void {
         let optionslist : any= document.getElementsByName("annotationType" + this.props.id)[0];
         let value: string = optionslist.options[optionslist.selectedIndex].value;
-        let type: TipsCourseType | undefined = undefined;
-        switch(value) {
-            case "TIPS": type = TipsCourseType.TIPS; break;
-            case "CORRECT": type = TipsCourseType.CORRECT; break;
-            case "WARNING": type = TipsCourseType.WARNING; break;
-            case "ERROR": type = TipsCourseType.ERROR; break;
-        }
-        console.log(type);
+        let type: TipsCourseType | undefined = stringToTipsCourseType(value);
 
         this.setState({
             content: this.state.content,
@@ -48,9 +41,9 @@ export class Paragraph extends React.Component<ParagraphProps, ParagraphModel> {
                 <div className="create_cours_paragraph_delete">
                     <span className="create_cours_paragraph_delete_char" onClick={() => { this.props.funcGetId && this.props.funcGetId(this.props.id);}}>x</span>
                 </div>
-                <div className="create_cours_paragraph_inputs">
-                    <TextArea label="Contenu du cours : " cols={150} rows={6}/>
-                    <OptionsList name={"annotationType" + this.props.id}
+                <div className={"create_cours_paragraph_inputs paragraphInputID" + this.props.id}>
+                    <TextArea id={this.props.id} label="Contenu du cours : " cols={150} rows={6}/>
+                    <OptionsList name={"annotationType" + this.props.id} id={this.props.id}
                         options={[
                             {content: "NONE",    value: "NONE"},
                             {content: "TIPS",    value: "TIPS"},                                
@@ -60,7 +53,12 @@ export class Paragraph extends React.Component<ParagraphProps, ParagraphModel> {
                         ]}
                         func={() => { this.changeState() }}
                     />
-                    {this.state.annotation && <TipsCourseModifiable type={this.state.annotation.tipsCourseType} content="zdzd"/>   }                     
+                    {this.state.annotation && 
+                    <TipsCourseModifiable 
+                        id={this.props.id}
+                        type={this.state.annotation.tipsCourseType} 
+                        content="zdzd"/>   
+                    }                     
                 </div>
             </div>
         );
