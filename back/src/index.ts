@@ -1,6 +1,7 @@
 import fastify, { FastifyReply, FastifyRequest } from 'fastify';
 import cors from '@fastify/cors';
 import { REPL_MODE_SLOPPY } from 'repl';
+import { ServiceBack } from './services';
 
 //importation des differentes tables
 import coursImp from './cours';
@@ -19,13 +20,12 @@ server.register(require('@fastify/mysql'), {
 
 server.register(cors,{});
 
-server.register(coursImp);
-server.register(quizzImp);
-server.register(exoLongImp);
-server.register(anneeImp);
-server.register(matiereImp);
-server.register(rubriqueImp);
-server.register(corrigeImp);
+server.register(coursImp,{ prefix: ServiceBack.getInstance().coursPre() });
+server.register(quizzImp,{ prefix: ServiceBack.getInstance().quizzPre() });
+server.register(exoLongImp,{ prefix: ServiceBack.getInstance().exoLongPre() });
+server.register(anneeImp,{ prefix: ServiceBack.getInstance().anneePre() });
+server.register(matiereImp,{ prefix: ServiceBack.getInstance().matierePre() });
+server.register(rubriqueImp,{ prefix: ServiceBack.getInstance().rubriquePre() });
 
 server.get('/', function(request: FastifyRequest, reply: FastifyReply) {
 
@@ -38,7 +38,7 @@ server.get('/', function(request: FastifyRequest, reply: FastifyReply) {
     )
 })
 
-server.listen({ port: 4000 }, (err:any, address:any) => {
+server.listen({ port: ServiceBack.getInstance().port() }, (err:any, address:any) => {
     if (err) throw err
     console.log(`server listening on ` + address)
   })
