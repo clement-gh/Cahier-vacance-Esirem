@@ -26,6 +26,7 @@ server.register(exoLongImp,{ prefix: ServiceBack.getInstance().exoLongPre() });
 server.register(anneeImp,{ prefix: ServiceBack.getInstance().anneePre() });
 server.register(matiereImp,{ prefix: ServiceBack.getInstance().matierePre() });
 server.register(rubriqueImp,{ prefix: ServiceBack.getInstance().rubriquePre() });
+server.register(corrigeImp,{ prefix: ServiceBack.getInstance().correctionPre() });
 
 server.get('/', function(request: FastifyRequest, reply: FastifyReply) {
 
