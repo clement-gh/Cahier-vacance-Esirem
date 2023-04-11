@@ -16,8 +16,18 @@
 }
 
 .input_input {
-    background-color: var(--second-color);
-    border-radius: 15px;
-    border: none;
-    height: 31px;
+    background-color: white;
+    border: 2px solid var(--second-color);    
+    border-radius: 60px;
+    height: 30px;
+    width: 100%;
+
+    text-align: center;
+
+    font-family: 'Kodchasan';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 42px;
+    color: rgba(0, 0, 0, 0.52);
 }

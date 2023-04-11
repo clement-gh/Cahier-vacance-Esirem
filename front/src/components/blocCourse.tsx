@@ -7,7 +7,7 @@ export class BlocCourse  extends React.Component <BlocCourseProps>  {
     render(): React.ReactNode {
       
         return (
-            <a href="./matieres" className="bloc_course">
+            <a href={this.props.link} className="bloc_course">
                 <div className="bloc_course_icon">
                     <img className="bloc_course_icon_img" src= {this.props.iconAdd} alt={this.props.iconAlt} />
                 </div>

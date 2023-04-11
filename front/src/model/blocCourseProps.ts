@@ -6,10 +6,6 @@ export type BlocCourseProps = {
    
     imgAdd: string;
     imgAlt: string;
+
+    link: string;
 }
-/*
-const mathsCourse: BlocCourseProps = { name: "Maths", imgLogoAdd: "./images/logoMaths.png", imgAdd: "" };
-const electroniqueCourse: BlocCourseProps = { name: "Electronique", imgLogoAdd: ".images/electroniqueLogo.png", imgAdd: "" };
-const informatiqueCourse: BlocCourseProps = { name: "Informatique", imgLogoAdd: ".images/computer.png", imgAdd: "" };
-export const bloctype: BlocCourseProps[] = [mathsCourse, electroniqueCourse, informatiqueCourse];
-*/

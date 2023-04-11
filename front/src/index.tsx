@@ -13,6 +13,7 @@ import { Quiz } from "./pages/quiz";
 import { ExerciceL } from "./pages/exerciceL"
 import { Corrige } from "./pages/corrige";
 import { CreateCoursPage } from "./pages/backoffice/create_cours_page";
+import { MenuBackOffice } from "./pages/backoffice/menu_backoffice";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -30,6 +31,7 @@ root.render(
       <Route path="/ExoLong/:id" element={<ExerciceL/>}/>
       <Route path="/corrige/:id" element={<Corrige/>}/>
       
+      <Route path="/backoffice" element={<MenuBackOffice/>}></Route>
       <Route path="/backoffice/creation_cours" element={<CreateCoursPage/>}></Route>
       <Route path="*" element={<NoPage />} />
     </Routes>

@@ -9,6 +9,7 @@ import { CreateCoursPageState, ParagraphModel } from "../../model/backoffice/cre
 import { Paragraph } from "../../components/course_page_components/course_page_modifiable/paragraph";
 import { text } from "stream/consumers";
 import { TipsCourseType, stringToTipsCourseType } from "../../model/Course_page_models/tipsCourseModel";
+import { Button } from "../../components/button";
 
 export class CreateCoursPage extends React.Component<any, CreateCoursPageState> {
     constructor(props: any) {
@@ -69,19 +70,31 @@ export class CreateCoursPage extends React.Component<any, CreateCoursPageState> 
         return (
             <main>
                 <NavBar/>
-                <Title content="Création d'un cours"/>                       
-                <div className="create_cours_inputs">   
+                <Title content="Création d'un cours"/>  
+
                 <div className="create_cours_titre_cours">     
-                <Input label="Titre du cours"/>
-                <p className="create_cours_p">Ajouter les paragraphes du cours : </p>
+                    <Input placeholder="Titre"/>
+                </div>         
+                <div className="create_cours_info_generale">
+                    <Input placeholder="Année"/>
+                    <Input placeholder="Matières"/>
+                    <Input placeholder="Type"/>
+                </div>            
+                <div className="create_cours_inputs">  
+                    
+                    {
+                        this.state.paragraphs.map((paragraph, index) => {
+                            return <Paragraph id={index} funcGetId={ (id: number) => {this.deleteParagraph(id);} }/>;
+                        })
+                    }
+                        <Plus func={()=>{ this.addParagraph();}}/>
                 </div>
-                {
-                    this.state.paragraphs.map((paragraph, index) => {
-                        return <Paragraph id={index} funcGetId={ (id: number) => {this.deleteParagraph(id);} }/>;
-                    })
-                }
-                    <Plus func={()=>{ this.addParagraph();}}/>
+
+                <div className="buttons_div">
+                    <div><Button content="Enregistrer"/></div>
+                    <div><Button content="Annulez"/></div>
                 </div>
+
                 <Footer/>
             </main>
         );

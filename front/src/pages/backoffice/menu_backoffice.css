@@ -1,0 +1,15 @@
+.menu_backoffice_blocs_courses {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    justify-content: center;
+}
+
+.menu_backoffice_page_text {
+    color: var(--main-color);
+    padding: 16px;
+    text-align: justify;
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 400;
+}
