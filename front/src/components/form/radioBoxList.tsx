@@ -2,7 +2,7 @@ import React from "react";
 import "./radioBoxList.css"
 
 type RadioBoxListProps = {
-    label: string,
+    label?: string,
     radioBoxOptions: RadioBoxOptions[],
 }
 
@@ -14,7 +14,7 @@ export class RadioBoxList extends React.Component<RadioBoxListProps> {
     render(): React.ReactNode {
         return (
             <div className="radioboxlist_div">
-                <label className="radioboxlist_label">{this.props.label}</label>
+                {this.props.label && <label className="radioboxlist_label">{this.props.label}</label> }
                 <div className="radioboxlist_container">
                 {
                     this.props.radioBoxOptions.map((value) => {

@@ -1,0 +1,48 @@
+.gestion_utilisateurs_section {
+    padding: 0 10% 0 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.gestion_utilisateurs_section > .input_div{
+    width: 100%;
+}
+
+.gestion_utilisateurs_checkbox_div {
+    display:  flex;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+
+.gestion_utilisateurs_checkbox_div .input_label {
+    flex: 4;
+}
+
+.gestion_utilisateurs_checkbox_div .input_input {
+    flex: 1;
+}
+
+.gestion_utilisateurs_buttons_div {
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0 20px 0;
+}
+
+.gestion_utilisateurs_buttons_div .button_component {
+    display: flex;
+    flex-direction: row;    
+    justify-content: center;
+    margin: 0 10% 0 10%;
+    height: 55px;
+}
+
+.paragraph_nb_result {
+    font-family: 'Kodchasan';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 31px;
+
+    color: rgba(0, 0, 0, 0.52);
+}

@@ -1,9 +1,15 @@
 .input_div {
-    display: flex;
-    flex-direction: row;
+    display: flex;    
     width: 90%;
     margin-bottom: 26px;
     align-items: center;
+}
+
+.input_display_row {
+    flex-direction: row;
+}
+.input_display_reverse_row {
+    flex-direction: row-reverse;
 }
 
 .input_label {

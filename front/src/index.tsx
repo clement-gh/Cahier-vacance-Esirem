@@ -14,6 +14,7 @@ import { ExerciceL } from "./pages/exerciceL"
 import { Corrige } from "./pages/corrige";
 import { CreateCoursPage } from "./pages/backoffice/create_cours_page";
 import { MenuBackOffice } from "./pages/backoffice/menu_backoffice";
+import { GestionUtilisateurs } from "./pages/backoffice/gestion_utilisateurs";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -32,6 +33,7 @@ root.render(
       <Route path="/corrige/:id" element={<Corrige/>}/>
       
       <Route path="/backoffice" element={<MenuBackOffice/>}></Route>
+      <Route path="/backoffice/gestion_utilisateurs" element={<GestionUtilisateurs/>}></Route>
       <Route path="/backoffice/creation_cours" element={<CreateCoursPage/>}></Route>
       <Route path="*" element={<NoPage />} />
     </Routes>
