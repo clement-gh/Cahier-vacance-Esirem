@@ -1,0 +1,18 @@
+.optionlist_select {
+    border-radius: 15px;
+    height: 41px;
+    width: 25%;
+
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 20px;
+
+
+    text-align: center;
+    color: rgba(0, 0, 0, 0.52);
+    font-family: 'Kodchasan';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 31px;
+}

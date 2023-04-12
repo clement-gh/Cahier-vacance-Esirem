@@ -3,9 +3,9 @@ import { NavBar } from "../../components/navbar";
 import { Footer } from "../../components/footer";
 import { Title } from "../../components/title";
 import { Input } from "../../components/form/input";
-import "./gestion_utilisateurs.css"
 import { Table } from "../../components/Table";
 import { Button } from "../../components/button";
+import "./gestion_utilisateurs.css"
 
 export class GestionUtilisateurs extends React.Component {
     render(): React.ReactNode {
