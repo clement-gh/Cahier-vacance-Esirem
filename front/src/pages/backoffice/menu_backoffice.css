@@ -7,8 +7,7 @@
 
 .menu_backoffice_page_text {
     color: var(--main-color);
-    padding: 16px;
-    text-align: justify;
+    text-align: center;
     font-size: 20px;
     line-height: 26px;
     font-weight: 400;
