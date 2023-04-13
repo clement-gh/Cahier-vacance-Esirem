@@ -62,11 +62,11 @@ export class GestionCours extends React.Component<any, GestionCoursState> {
                         ]} />
                     </div>
 
-                    <Table row_titles={["Création", "Titre", "Auteur", "Type", "Matiere"]} 
+                    <Table row_titles={["Création", "Titre", "Auteur", "Type", "Année", "Matiere"]} 
                         rows={
-                            [["10/01/2022", "Nom1", "Prenom1", "Etudiant", "3ème"],
-                             ["10/05/2022", "Nom2", "Prenom2", "Professeur", "-"],
-                             ["10/01/2022", "Nom3", "Prenom3", "Admin", "-"]]
+                            [["10/01/2022", "Titre1", "Prenom1", "Etudiant", "3ème", "Info"],
+                             ["10/05/2022", "Titre2", "Prenom2", "Professeur", "4ème", "Elec"],
+                             ["10/01/2022", "Titre3", "Prenom3", "Admin", "-", "Maths"]]
                         }
                     />
 
