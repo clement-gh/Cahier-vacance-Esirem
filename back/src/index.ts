@@ -13,9 +13,9 @@ import corrigeImp from './corrige';
 
 const server = require('fastify')()
 
-server.register(require('@fastify/mysql'), {
+/*server.register(require('@fastify/mysql'), {
   connectionString: 'mysql://root@localhost/Projet_Esirem'
-})
+})*/
 
 server.register(cors,{});
 

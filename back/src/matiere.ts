@@ -44,5 +44,22 @@ export default async function routes (fastify : any, options : any) {
              
             })
               
-            
+            type PutRequestMatiere = FastifyRequest<{
+                Params: {
+                    idMatiere: string,
+                }
+                Body: { 
+                    nom: string,
+                    idAnneeEsirem: string,
+                };
+            }>
+    
+            fastify.put('/matiere/putRequest/:idMatiere', (request:PutRequestMatiere, reply:FastifyReply) => {
+                fastify.mysql.query(
+                    'UPDATE `matiere` SET nom = '+request.body.nom+',idAnneeEsirem ='+request.body.idAnneeEsirem +' WHERE idMatiere = '+ request.params.idMatiere,
+                    function onResult (err:any, result:any) {
+                        reply.send(err || result[0])
+                    }
+                )
+            })
     }

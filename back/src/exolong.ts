@@ -27,4 +27,49 @@ export default async function routes (fastify : any, options : any) {
                 }
             )
         })
+
+        type PutRequestExoLong = FastifyRequest<{
+            Params: {
+                idExoLong: string,
+            }
+            Body: { 
+                contenu: string,
+                difficulte: string,
+                idCorrection: string,
+                idMatiere: string,
+                titreExoLong: string,
+            };
+        }>
+
+        fastify.put('/exoL/putRequest/:idExoLong', (request:PutRequestExoLong, reply:FastifyReply) => {
+            fastify.mysql.query(
+                'UPDATE `exolong` SET titreExoLong = '+request.body.titreExoLong+', contenu = '+ request.body.contenu+', difficulte ='+request.body.difficulte+', idCorrection =' +request.body.idCorrection+', idMatiere ='+request.body.idMatiere+' WHERE idexolong = '+ request.params.idExoLong,
+                function onResult (err:any, result:any) {
+                    reply.send(err || result[0])
+                }
+            )
+        })
+
+        type PutRequestExoLongCorrige = FastifyRequest<{
+            Params: {
+                idExoLong: string,
+                idUser: string,
+            }
+            Body: { 
+                dateExoLong: Date,
+            };
+        }>
+
+        fastify.put('/exoL/putRequest/:idExoLong/:idUser', (request:PutRequestExoLongCorrige, reply:FastifyReply) => {
+            fastify.mysql.query(
+                'UPDATE `exolongeffectué` SET dateExoLong = '+request.body.dateExoLong+' WHERE idexolong = '+ request.params.idExoLong+' and iduser = '+ request.params.idUser,
+                function onResult (err:any, result:any) {
+                    reply.send(err || result[0])
+                }
+            )
+        })
+
+
         }
+
+        

@@ -1,5 +1,18 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 
+const opts = {
+    schema: {
+      response: {
+        200: {
+          type: 'object',
+          properties: {
+            hello: { type: 'string' }
+          }
+        }
+      }
+    }
+  }
+
 export default async function routes (fastify : any, options : any) {
     
         //data correspond au info retourné par la requete sql
@@ -26,4 +39,24 @@ export default async function routes (fastify : any, options : any) {
                 }
             )
         })
+
+
+        
+        type PutRequestAnnee = FastifyRequest<{
+            Params: {
+                idannee: string,
+            }
+            Body: { nom: string };
+        }>
+
+        fastify.put('/annee/putRequest/:idannee', (request:PutRequestAnnee, reply:FastifyReply) => {
+            fastify.mysql.query(
+                'UPDATE `anneeesirem` SET nom = '+ request.body.nom +' where idanneeesirem = ' + request.params.idannee,
+                function onResult (err:any, result:any) {
+                    reply.send(err || result[0])
+                }
+            )
+        })
+
+        
     }

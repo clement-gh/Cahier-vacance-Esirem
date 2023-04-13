@@ -32,4 +32,25 @@ export default async function routes (fastify : any, options : any) {
                 }
             )
         })
+
+        type PutRequestRubrique = FastifyRequest<{
+            Params: {
+                idRubrique: string,
+            }
+            Body: { 
+                idCours: string,
+                idMatiere: string,
+                idQuizz: string,
+                idExoLong: string,
+            };
+        }>
+
+        fastify.put('/rubrique/putRequest/:idRubrique', (request:PutRequestRubrique, reply:FastifyReply) => {
+            fastify.mysql.query(
+                'UPDATE `rubrique` SET idcours = '+request.body.idCours+',idmatiere = '+request.body.idMatiere+',idquizz = '+request.body.idQuizz+', idCours = '+request.body.idCours+', idexolong = '+request.body.idExoLong+' WHERE idrubrique = '+ request.params.idRubrique,
+                function onResult (err:any, result:any) {
+                    reply.send(err || result[0])
+                }
+            )
+        })
     }

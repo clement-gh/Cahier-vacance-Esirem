@@ -26,4 +26,23 @@ export default async function routes (fastify : any, options : any) {
                 }
             )
         })
+
+        type PutRequestCorrection = FastifyRequest<{
+            Params: {
+                idCorrection: string,
+            }
+            Body: { 
+                titreCorrection: string,
+                contenu: string,
+            };
+        }>
+
+        fastify.put('/correction/putRequest/:idCorrection', (request:PutRequestCorrection, reply:FastifyReply) => {
+            fastify.mysql.query(
+                'UPDATE `correction` SET titreCorrection = '+request.body.titreCorrection+',contenu = '+request.body.contenu+' WHERE idcorrection = '+ request.params.idCorrection,
+                function onResult (err:any, result:any) {
+                    reply.send(err || result[0])
+                }
+            )
+        })
 }
