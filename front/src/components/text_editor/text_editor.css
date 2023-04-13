@@ -1,0 +1,6 @@
+.text_editor {
+    min-height: 400px;
+    width: 100%;
+    border: solid 1px var(--second-color);
+    padding: 2px;
+}

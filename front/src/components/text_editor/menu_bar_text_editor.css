@@ -1,0 +1,16 @@
+.menu_bar_text_editor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+    border-bottom: solid 1px var(--second-color);
+}
+
+.menu_bar_text_editor button {
+    flex: 1;
+    background-color: white;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    min-height: 30px;
+    margin: 5px;
+}
