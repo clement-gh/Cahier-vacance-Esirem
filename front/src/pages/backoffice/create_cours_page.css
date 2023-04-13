@@ -19,8 +19,8 @@
     margin: 0 5% 0 5%;
 }
 
-.create_cours_info_generale .input_input {
-    margin-right: 20px;
+.create_cours_info_generale > .optionlist_select {
+    margin:auto;
 }
 
 .buttons_div {

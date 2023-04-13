@@ -6,8 +6,33 @@ import { NavBar } from "../../components/navbar";
 import { Footer } from "../../components/footer";
 import { Button } from "../../components/button";
 import { TextEditor, getEditor } from "../../components/text_editor/text_editor";
+import { OptionsList } from "../../components/form/optionsList";
+import { Year, loadAllYears } from "../../model/yearLoader";
+import { loadNomMatiere } from "../../model/MatiereLoader";
 
-export class CreateCoursPage extends React.Component {
+type CreateCoursPageState = {
+    years: Year[];
+    nomMatieres: string[],
+};
+
+export class CreateCoursPage extends React.Component<any, CreateCoursPageState> {
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            years: [],
+            nomMatieres: [],
+        }
+    }
+
+    async componentDidMount() {
+        let years = await loadAllYears();
+        let matieres = await loadNomMatiere();
+
+        this.setState({
+            years: years,
+            nomMatieres: matieres,
+        });
+    }
 
     save() {
         let editor = getEditor();
@@ -27,9 +52,19 @@ export class CreateCoursPage extends React.Component {
                     <Input placeholder="Titre"/>
                 </div>         
                 <div className="create_cours_info_generale">
-                    <Input placeholder="Année"/>
-                    <Input placeholder="Matières"/>
-                    <Input placeholder="Type"/>
+                    <OptionsList placeholder="Années" options={
+                        this.state.years.map((year: Year) => {
+                            return {content: year.nom, value: year.nom}
+                        })} />
+                    <OptionsList placeholder="Matières" options={
+                        this.state.nomMatieres.map((matiere: string) => {
+                            return {content: matiere, value: matiere}
+                        })} />
+                    <OptionsList placeholder="Type" options={[
+                        {content: "Cours"},
+                        {content: "Exercice"},
+                        {content: "Quizz"},
+                    ]} />
                 </div>    
 
                 <section className="create_course_text_editor">
