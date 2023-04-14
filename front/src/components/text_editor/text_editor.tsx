@@ -1,23 +1,28 @@
-import React from "react";
 import { Editor } from '@tiptap/core'
-import { useEditor, EditorContent } from '@tiptap/react'
-import Document from '@tiptap/extension-document'
-import Paragraph from '@tiptap/extension-paragraph'
-import Text from '@tiptap/extension-text'
-import StarterKit from '@tiptap/starter-kit'
+import { useEditor, EditorContent } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
 
-import { Color } from '@tiptap/extension-color'
-import ListItem from '@tiptap/extension-list-item'
-import TextStyle from '@tiptap/extension-text-style'
+import { Color } from '@tiptap/extension-color';
+import ListItem from '@tiptap/extension-list-item';
+import TextStyle from '@tiptap/extension-text-style';
 import MenuBar from "./menu_bar_text_editor";
 import "./text_editor.css"
+import FloatingMenuBar from './floating_menu';
 
+///
+/// global variable of the Tiptap editor.
+/// allow us to use get the editor outise of the component
+///
 var editor: any;
 
 export function getEditor() : Editor | null {
     return editor;
 }
 
+
+///
+/// We use React function component because 'useEditor' don't allow us to use class component
+///
 export function TextEditor() {
   editor = useEditor({
     extensions: [
@@ -70,6 +75,7 @@ export function TextEditor() {
   return (
     <div className="text_editor">
       <MenuBar editor={editor} />
+      <FloatingMenuBar editor={editor} />
       <EditorContent editor={editor} />
     </div>
   )

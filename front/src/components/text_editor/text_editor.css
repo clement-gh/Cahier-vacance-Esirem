@@ -4,3 +4,12 @@
     border: solid 1px var(--second-color);
     padding: 2px;
 }
+
+.ProseMirror pre {
+    background: #0D0D0D;
+    color: #FFF;
+    font-family: 'JetBrainsMono', monospace;
+    padding: 0.75rem 1rem;
+    margin: 10px;
+    border-radius: 0.5rem;
+}

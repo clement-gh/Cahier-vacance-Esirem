@@ -1,0 +1,12 @@
+.bubble-menu {
+    display: flex;
+    justify-content: center;
+}
+
+.bubble-menu button, .bubble-menu input, .floating-menu button, .floating-menu input {
+    flex: 1;    
+    background-color: white;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    height: 25px;
+}

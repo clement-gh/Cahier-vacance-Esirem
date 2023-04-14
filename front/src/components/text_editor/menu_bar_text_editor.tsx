@@ -1,6 +1,11 @@
 import { Editor } from '@tiptap/core'
 import "./menu_bar_text_editor.css"
 
+
+///
+/// Menu bar of the Tiptap editor
+/// react function component because the lib don't support class components
+///
 const MenuBar = ( { editor }: { editor : Editor | null} ) => {
     if (!editor) {
       return null
@@ -47,31 +52,12 @@ const MenuBar = ( { editor }: { editor : Editor | null} ) => {
         >
           strike
         </button>
-        <button
-          onClick={() => editor.chain().focus().toggleCode().run()}
-          disabled={
-            !editor.can()
-              .chain()
-              .focus()
-              .toggleCode()
-              .run()
-          }
-          className={editor.isActive('code') ? 'is-active' : ''}
-        >
-          code
-        </button>
-        <button
-          onClick={() => editor.chain().focus().setParagraph().run()}
-          className={editor.isActive('paragraph') ? 'is-active' : ''}
-        >
-          paragraph
-        </button>
-        <button
-          onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-          className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}
-        >
-          h1
-        </button>
+        <input
+          type="color"
+          onInput={event => editor.chain().focus().setColor((event.target as any).value).run()}
+          value={editor.getAttributes('textStyle').color}
+        />
+        <button onClick={() => editor.chain().focus().unsetColor().run()}>unsetColor</button>
         <button
           onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
           className={editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}
@@ -137,12 +123,6 @@ const MenuBar = ( { editor }: { editor : Editor | null} ) => {
           }
         >
           redo
-        </button>
-        <button
-          onClick={() => editor.chain().focus().setColor('#FF0000').run()}
-          className={editor.isActive('textStyle', { color: '#FF0000' }) ? 'is-active' : ''}
-        >
-          red
         </button>
     </div>
 )}
