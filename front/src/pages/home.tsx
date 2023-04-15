@@ -4,8 +4,6 @@ import { Footer } from "../components/footer";
 import { NavBar } from "../components/navbar";
 import { Title } from "../components/title";
 import "./home.css";
-import { BlocCourseProps } from "../model/blocCourseProps";
-//import  { bloctype} from "../model/blocCourseProps";
 
 export class Home extends React.Component  {
 
