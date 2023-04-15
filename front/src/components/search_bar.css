@@ -1,0 +1,24 @@
+.seach_bar_div {
+    position: relative;
+}
+
+.seach_bar_div .input_div {
+    width: 100%;
+}
+
+.seach_bar_div > img {
+    max-width: 34px;
+    max-height: 34px;
+}
+
+.search_bar_loupe_icon {
+    position: absolute;
+    top: 2px;
+    left: 6px;
+}
+
+.search_bar_close_icon {
+    position: absolute;
+    top: 1px;
+    right: 6px;
+}

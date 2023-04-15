@@ -6,6 +6,7 @@ import { Input } from "../../components/form/input";
 import { Table } from "../../components/Table";
 import { Button } from "../../components/button";
 import "./gestion_utilisateurs.css"
+import { SearchBar } from "../../components/search_bar";
 
 export class GestionUtilisateurs extends React.Component {
     render(): React.ReactNode {
@@ -17,7 +18,7 @@ export class GestionUtilisateurs extends React.Component {
 
                 <section  className="gestion_utilisateurs_section">
 
-                    <Input placeholder="Recherche..."/>
+                    <SearchBar/>
                     <div className="gestion_utilisateurs_checkbox_div">                    
                         <Input label="Etudiant" type="checkbox" labelSideRight={true}/>
                         <Input label="Professeur" type="checkbox" labelSideRight={true}/>

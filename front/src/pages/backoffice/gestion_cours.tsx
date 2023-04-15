@@ -3,13 +3,12 @@ import { NavBar } from "../../components/navbar";
 import { Table } from "../../components/Table";
 import { Button } from "../../components/button";
 import { Footer } from "../../components/footer";
-import { Input } from "../../components/form/input";
 import { Title } from "../../components/title";
-import "./gestion_cours.css"
 import { OptionsList } from "../../components/form/optionsList";
 import { Year, loadAllYears } from "../../model/yearLoader";
 import { loadNomMatiere } from "../../model/MatiereLoader";
-
+import { SearchBar } from "../../components/search_bar";
+import "./gestion_cours.css"
 
 type GestionCoursState = {
 
@@ -45,7 +44,7 @@ export class GestionCours extends React.Component<any, GestionCoursState> {
 
                 <section  className="gestion_cours_section">
 
-                    <Input placeholder="Recherche..."/>
+                    <SearchBar/>
                     <div className="gestion_cours_options_div">      
                         <OptionsList placeholder="Années" options={
                             this.state.years.map((year: Year) => {
