@@ -4,7 +4,7 @@ import { Footer } from "../../components/footer";
 import { Title } from "../../components/title";
 import { Input } from "../../components/form/input";
 import { Table } from "../../components/Table";
-import { Button } from "../../components/button";
+import { Button, ColorButton } from "../../components/button";
 import "./gestion_utilisateurs.css"
 import { SearchBar } from "../../components/search_bar";
 
@@ -36,9 +36,9 @@ export class GestionUtilisateurs extends React.Component {
                     <p className="paragraph_nb_result">4 résultats obtenus</p>
 
                     <div className="gestion_utilisateurs_buttons_div">
-                        <Button content="Créer un utilisateur"/>
-                        <Button content="Modifier un utilisateur"/>
-                        <Button content="Supprimer la selection"/>
+                        <Button content="Créer un utilisateur" color={ColorButton.BLUE}/>
+                        <Button content="Modifier un utilisateur" color={ColorButton.YELLOW}/>
+                        <Button content="Supprimer la selection" color={ColorButton.RED}/>
                     </div>
 
                 </section>

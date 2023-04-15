@@ -1,7 +1,7 @@
 import React from "react";
 import { NavBar } from "../../components/navbar";
 import { Table } from "../../components/Table";
-import { Button } from "../../components/button";
+import { Button, ColorButton } from "../../components/button";
 import { Footer } from "../../components/footer";
 import { Title } from "../../components/title";
 import { OptionsList } from "../../components/form/optionsList";
@@ -72,9 +72,9 @@ export class GestionCours extends React.Component<any, GestionCoursState> {
                     <p className="paragraph_nb_result">4 résultats obtenus</p>
 
                     <div className="gestion_cours_buttons_div">
-                        <Button content="Créer un cours"/>
-                        <Button content="Modifier un cours"/>
-                        <Button content="Supprimer la selection"/>
+                        <Button content="Créer un cours" color={ColorButton.BLUE}/>
+                        <Button content="Modifier un cours" color={ColorButton.YELLOW}/>
+                        <Button content="Supprimer la selection" color={ColorButton.RED}/>
                     </div>
 
                 </section>
