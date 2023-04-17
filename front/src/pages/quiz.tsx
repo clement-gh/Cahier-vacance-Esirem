@@ -6,6 +6,7 @@ import { Title } from "../components/title";
 import { QuizProps } from "../model/blocQuizProps";
 import { PropositionsType } from "../model/Quiz_page_models/propositionsModel";
 import "./quiz.css"
+import { callAPI } from "../model/api_caller";
 
 export class Quiz extends React.Component<any, QuizProps>{
 
@@ -17,8 +18,8 @@ export class Quiz extends React.Component<any, QuizProps>{
     async componentDidMount(){
         let path = window.location.pathname.split("/");
         let id = path[path.length - 1];
-        let response = await fetch("http://[::1]:4000/quizz/" + id);
-        let quizJson = await response.json();
+        let quizJson = await callAPI("quizz/" + id)
+
         let contenu = JSON.parse(quizJson.contenu);
         let proposition: { nom: string, details: string }[] = contenu.proposition;
 

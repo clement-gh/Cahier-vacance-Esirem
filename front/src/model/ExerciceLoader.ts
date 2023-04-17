@@ -1,6 +1,7 @@
 import { Paragraph } from "./CourseLoader";
 import { extractStringBetweenBorn } from "./CourseLoader";
 import { extractStringsBetweenBorn } from "./CourseLoader";
+import { callAPI } from "./api_caller";
 
 export type Exercice = {
     id: number;
@@ -14,9 +15,7 @@ export type Exercice = {
 
 //function to load a course with his id
 export async function loadExercice(id: number | string): Promise<Exercice> {
-    let response = await fetch('http://[::1]:4000/exoL/' + id);
-    
-    let principal = await response.json();
+    let principal = await callAPI("exoL/" + id);
     let secondary = JSON.parse(principal.contenu);
     //parse each bloc tag
     let paragraphs: Paragraph[] = []

@@ -4,13 +4,21 @@ import { Footer } from "../components/footer";
 import { NavBar } from "../components/navbar";
 import { Title } from "../components/title";
 import "./matiere.css";
+import { loadNomMatiere } from "../model/MatiereLoader";
+import { callAPI } from "../model/api_caller";
 
+
+type annee = {
+    nomAnnee: string,
+     nomMatiere: string,
+      idMatiere : number
+};
 
 //Page d'une Matiere qui affichera les cours correspondants
 //Doit chargé la liste des cours via l'API
 interface IStateMatiere {
     matieres: string[],
-    years: {nomAnnee: string, nomMatiere: string, idMatiere : number}[]
+    years: annee[]
 }  
 
 
@@ -25,48 +33,28 @@ export class Matiere extends React.Component<any, IStateMatiere>  {
         };
     }
 
-    async componentDidMount() {        
-        let JSON_Matieres : string[] = [];
-        let response = await fetch('http://[::1]:4000/listeMatieres');
-    
-        if(response.status === 200) {
-            try {
-                JSON_Matieres = await response.json();
-            } catch {
-                console.log("PARSE ERROR");
-            }
-        } else {
-            console.log("FETCH ERROR");
-        }
-        let matieresList : string[] = JSON_Matieres.map((value: any) => {
-            return value.nom;
-        });
-        
-        this.setState({matieres: matieresList});
-       let JSON_Annees : {nomAnnee: string, nomMatiere: string}[] = [];
-        response = await fetch('http://[::1]:4000/matiere');
-        if (response.status === 200) {
-            try {
-                JSON_Annees = await response.json();
-            } catch {
-                console.log("PARSE ERROR");
-            }
-        } else {
-            console.log("FETCH ERROR");
-        }
-        let anneesList : {nomAnnee: string, nomMatiere: string, idMatiere : number}[] = JSON_Annees.map((value: any) => {
-        return {nomAnnee: value.nomAnnee, nomMatiere: value.nomMatiere , idMatiere : value.idMatiere};
-        });
-        this.setState({years: anneesList});
-        console.log(this.state.years)
-        console.log(anneesList);
+    async componentDidMount() {      
+        let matieresList : string[] = await loadNomMatiere();
 
+        let JSON_Annees = await callAPI("matiere");
+
+        let anneesList : annee[] = JSON_Annees.map((value: any) => {
+            return {
+                nomAnnee: value.nomAnnee,
+                nomMatiere: value.nomMatiere,
+                idMatiere : value.idMatiere,
+            };
+        });
+
+        this.setState({
+            matieres: matieresList,
+            years: anneesList,
+        });
     }
  
  
    
     render(): React.ReactNode {
-        console.log(this.state.years);
         return (
             <main className="page_matiere">
                 <NavBar/>

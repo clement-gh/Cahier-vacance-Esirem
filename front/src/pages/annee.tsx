@@ -4,6 +4,7 @@ import { Footer } from "../components/footer";
 import { NavBar } from "../components/navbar";
 import { Title } from "../components/title";
 import "./annee.css";
+import { callAPI } from "../model/api_caller";
 
 type Rubrik = {
     idRubrique:number,
@@ -36,38 +37,13 @@ export class Annee extends React.Component<any,IStateAnnee> {
         let dir : string = window.location.pathname;    
         dir = dir.split("/")[2];
         
-        let JSON_Rubriques : {id:number, nom:string}[] = [];
-
-        let response = await fetch('http://[::1]:4000/listRubrique/'+dir);
-        if(response.status === 200) {
-            try {
-                JSON_Rubriques = await response.json();
-               
-            } catch {
-                console.log("PARSE ERROR");
-            }
-        }
-        else {
-            console.log("FETCH ERROR");
-        }
+        let JSON_Rubriques : {id:number, nom:string}[] = await callAPI('listRubrique/' + dir);
     
         let rubriquesList : {id: number, nom: string}[] = JSON_Rubriques.map((value: any) => {
             return {id: value.id, nom: value.nom};
         });
         
-        let JSON_Rubrik : Rubrik[] = [];
-        let response2 = await fetch('http://[::1]:4000/rubrique/'+dir);
-        if(response2.status === 200) {
-            try {
-                JSON_Rubrik = await response2.json();
-               
-            } catch {
-                console.log("PARSE ERROR");
-            }
-        }
-        else {
-            console.log("FETCH ERROR");
-        }
+        let JSON_Rubrik : Rubrik[] = await callAPI('rubrique/' + dir);
         let rubriks: Rubrik[] = JSON_Rubrik.map((value: any) => {
             return{ 
                 idRubrique:     value.idRubrique,

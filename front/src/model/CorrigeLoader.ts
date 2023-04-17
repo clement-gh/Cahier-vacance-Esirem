@@ -1,6 +1,6 @@
 import { Paragraph } from "./CourseLoader";
 import { extractStringBetweenBorn } from "./CourseLoader";
-import { extractStringsBetweenBorn } from "./CourseLoader";
+import { callAPI } from "./api_caller";
 
 export type Corriger = {
     id: number;
@@ -11,9 +11,7 @@ export type Corriger = {
 
 //function to load a course with his id
 export async function loadCorriger(id: number | string): Promise<Corriger> {
-    let response = await fetch('http://[::1]:4000/correction/' + id);
-    
-    let principal = await response.json();
+    let principal = await callAPI("correction/");
     let secondary = JSON.parse(principal.contenu);
     //parse each bloc tag
     let paragraphs: Paragraph[] = []
