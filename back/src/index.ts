@@ -14,19 +14,20 @@ import corrigeImp from './corrige';
 
 const server = require('fastify')()
 
-server.register(require('@fastify/mysql'), {
+/*server.register(require('@fastify/mysql'), {
   connectionString: 'mysql://root@localhost/Projet_Esirem'
-})
+})*/
 
 server.register(cors,{});
+let serviceBack = ServiceBack.getInstance();
 
-server.register(coursImp,{ prefix: ServiceBack.getInstance().coursPre() });
-server.register(quizzImp,{ prefix: ServiceBack.getInstance().quizzPre() });
-server.register(exoLongImp,{ prefix: ServiceBack.getInstance().exoLongPre() });
-server.register(anneeImp,{ prefix: ServiceBack.getInstance().anneePre() });
-server.register(matiereImp,{ prefix: ServiceBack.getInstance().matierePre() });
-server.register(rubriqueImp,{ prefix: ServiceBack.getInstance().rubriquePre() });
-server.register(corrigeImp,{ prefix: ServiceBack.getInstance().correctionPre() });
+server.register(coursImp,{ prefix: serviceBack.coursPre() });
+server.register(quizzImp,{ prefix: serviceBack.quizzPre() });
+server.register(exoLongImp,{ prefix: serviceBack.exoLongPre() });
+server.register(anneeImp,{ prefix: serviceBack.anneePre() });
+server.register(matiereImp,{ prefix: serviceBack.matierePre() });
+server.register(rubriqueImp,{ prefix: serviceBack.rubriquePre() });
+server.register(corrigeImp,{ prefix: serviceBack.correctionPre() });
 
 server.get('/', function(request: FastifyRequest, reply: FastifyReply) {
 
@@ -39,7 +40,7 @@ server.get('/', function(request: FastifyRequest, reply: FastifyReply) {
     )
 })
 
-server.listen({ port: ServiceBack.getInstance().port() }, (err:any, address:any) => {
+server.listen({ port: serviceBack.port() }, (err:any, address:any) => {
     if (err) throw err
     console.log(`server listening on ` + address)
   })
