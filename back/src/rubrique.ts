@@ -19,7 +19,7 @@ export default async function routes (fastify : any, options : any) {
         })
         //data correspond au info retourné par la requete sql
         //return un cours 
-        fastify.get('/rubrique/:idMatiere', (request:FastifyRequest<{
+        fastify.get('/:idMatiere', (request:FastifyRequest<{
             Params: {
           
               idMatiere: string,

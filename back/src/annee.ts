@@ -4,7 +4,7 @@ export default async function routes (fastify : any, options : any) {
     
         //data correspond au info retourné par la requete sql
         //return la liste des annees 
-        fastify.get("/annee", (request : FastifyRequest, reply : FastifyReply) => {
+        fastify.get("", (request : FastifyRequest, reply : FastifyReply) => {
             fastify.mysql.query(
                 'SELECT * FROM `anneeesirem`',
                 function onResult (err:any, result:any) {
@@ -14,7 +14,7 @@ export default async function routes (fastify : any, options : any) {
         })
         //data correspond au info retourné par la requete sql
         //return une annee 
-        fastify.get('/annee/:id', (request:FastifyRequest<{
+        fastify.get('/:id', (request:FastifyRequest<{
             Params: {
               id: string,
             };

@@ -17,7 +17,7 @@ export default async function routes (fastify : any, options : any) {
                 }
                 )
             })
-            fastify.get('/matiere/:id', (request:FastifyRequest<{
+            fastify.get('/:id', (request:FastifyRequest<{
                 Params: {
                   id: String,
                 };
@@ -32,7 +32,7 @@ export default async function routes (fastify : any, options : any) {
                 )
              
             })
-            fastify.get('/matiere', (request:FastifyRequest, reply:FastifyReply) => {
+            fastify.get('', (request:FastifyRequest, reply:FastifyReply) => {
                 fastify.mysql.query(
                     
                     'SELECT anneeesirem.nom AS nomAnnee, matiere.nom AS nomMatiere , matiere.idMatiere FROM `anneeesirem` RIGHT JOIN `matiere` ON anneeesirem.idAnneeEsirem = matiere.idAnneeEsirem ',

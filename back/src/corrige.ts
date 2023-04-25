@@ -3,7 +3,7 @@ import { FastifyReply, FastifyRequest } from "fastify";
 export default async function routes (fastify : any, options : any) {
         //data correspond au info retourné par la requete sql
         //return la liste des corriges
-        fastify.get("/correction", (request : FastifyRequest,reply : FastifyReply) => {
+        fastify.get("", (request : FastifyRequest,reply : FastifyReply) => {
             fastify.mysql.query(
                 'SELECT * FROM `correction`',
                 function onResult (err:any, result:any) {
@@ -14,7 +14,7 @@ export default async function routes (fastify : any, options : any) {
         })
         //data correspond au info retourné par la requete sql
         //return un exo long 
-        fastify.get('/correction/:id', (request:FastifyRequest<{
+        fastify.get('/:id', (request:FastifyRequest<{
             Params: {
               id: string,
             };
