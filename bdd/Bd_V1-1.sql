@@ -70,9 +70,10 @@ create table IF NOT EXISTS Quizz (
 );
 
 create table IF NOT EXISTS Cours (
-	idCours int primary key,
+	idCours int primary key AUTO_INCREMENT,
     titreCours varchar(45),
-    contenu json,
+    dateCreation date,
+    contenu TEXT,
     idRubrique int
     
 );

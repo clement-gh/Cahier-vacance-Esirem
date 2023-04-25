@@ -27,6 +27,24 @@ export default async function routes (fastify : any, options : any) {
         )
     })
 
+    type PostRequestCours = FastifyRequest<{
+        Body: {
+            titreCours: string, 
+            contenu: string,
+        };
+    }>
+    
+    fastify.post("/post/", (request:PostRequestCours, reply:FastifyReply) => {
+        let body = request.body;
+        fastify.mysql.query(
+            'INSERT INTO cours (titreCours, contenu) VALUES (? , ?); ',
+            [body.titreCours, body.contenu],
+            function onResult (err:any, result:any) {
+                reply.send(err || result[0])
+            }
+        )
+    });
+
     type PutRequestCours = FastifyRequest<{
         Params: {
             idCours: string,

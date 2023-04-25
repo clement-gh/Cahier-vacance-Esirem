@@ -9,6 +9,7 @@ import { TextEditor, getEditor } from "../../components/text_editor/text_editor"
 import { OptionsList } from "../../components/form/optionsList";
 import { Year, loadAllYears } from "../../model/yearLoader";
 import { loadNomMatiere } from "../../model/MatiereLoader";
+import { PostApi } from "../../model/api_caller";
 
 type CreateCoursPageState = {
     years: Year[];
@@ -34,12 +35,29 @@ export class CreateCoursPage extends React.Component<any, CreateCoursPageState> 
         });
     }
 
-    save() {
+    async save() {
+        let inputTitle = document.querySelector("#inputTitleCours") as any;        
+        let title: string = inputTitle.value ? inputTitle.value : "";
+
+        let dz: FormData = new FormData();        
+        dz.append('titreCours', title);
+        let html = "";
         let editor = getEditor();
         if(editor) {
-            let html = editor.getHTML();
-            console.log(html);
+            html = editor.getHTML();
+            dz.append('contenu', html); 
+        } else {
+            dz.append('contenu', "");
         }
+
+        let coursToPost = {        
+            titreCours: title, 
+            contenu: html,            
+        }
+
+        console.log(coursToPost);
+        let b = await PostApi('cours/post/', coursToPost);
+        console.log(b);
     }
 
     render(): React.ReactNode {
@@ -49,7 +67,7 @@ export class CreateCoursPage extends React.Component<any, CreateCoursPageState> 
                 <Title content="Création d'un cours"/>  
 
                 <div className="create_cours_titre_cours">     
-                    <Input placeholder="Titre"/>
+                    <Input id="inputTitleCours" placeholder="Titre"/>
                 </div>         
                 <div className="create_cours_info_generale">
                     <OptionsList placeholder="Années" options={
