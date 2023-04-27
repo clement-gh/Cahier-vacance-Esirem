@@ -18,9 +18,11 @@ export async function callAPI(subAdrr: string): Promise<any> {
 
 ///return true if the request is fine, else return false
 export async function PostApi(subAdrr: string, body: any): Promise<boolean> {
+    // [string, string][] | Record<string, string> | Headers;
     let response = await fetch(addr + subAdrr, {
             method: 'POST',
-            body: body,   
+            body: JSON.stringify(body),  
+            headers: [["Content-Type","application/json"]], 
         });
     return handleFetchError(response);
     
@@ -32,6 +34,7 @@ function handleFetchError(response: Response): boolean {
         console.log(response.url);
         console.log("code erreur : " + response.status);
         console.log(response.statusText);
+        console.log(response.text());
         return false;
     }
     return true;

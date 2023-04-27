@@ -39,25 +39,17 @@ export class CreateCoursPage extends React.Component<any, CreateCoursPageState> 
         let inputTitle = document.querySelector("#inputTitleCours") as any;        
         let title: string = inputTitle.value ? inputTitle.value : "";
 
-        let dz: FormData = new FormData();        
-        dz.append('titreCours', title);
-        let html = "";
+        let html: string = "";
         let editor = getEditor();
         if(editor) {
             html = editor.getHTML();
-            dz.append('contenu', html); 
-        } else {
-            dz.append('contenu', "");
-        }
+        } 
 
         let coursToPost = {        
             titreCours: title, 
             contenu: html,            
         }
-
-        console.log(coursToPost);
         let b = await PostApi('cours/post/', coursToPost);
-        console.log(b);
     }
 
     render(): React.ReactNode {

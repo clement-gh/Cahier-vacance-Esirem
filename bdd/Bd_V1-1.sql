@@ -75,7 +75,6 @@ create table IF NOT EXISTS Cours (
     dateCreation date,
     contenu TEXT,
     idRubrique int
-    
 );
 
 create table IF NOT EXISTS Matiere (
