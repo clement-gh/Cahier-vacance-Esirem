@@ -49,7 +49,7 @@ export default async function routes (fastify : any, options : any) {
         Body: { nom: string };
     }>
 
-    fastify.put('/annee/putRequest/:idannee', (request:PutRequestAnnee, reply:FastifyReply) => {
+    fastify.put('/putRequest/:idannee', (request:PutRequestAnnee, reply:FastifyReply) => {
         fastify.mysql.query(
             'UPDATE `anneeesirem` SET nom = '+ request.body.nom +' where idanneeesirem = ' + request.params.idannee,
             function onResult (err:any, result:any) {
@@ -58,7 +58,7 @@ export default async function routes (fastify : any, options : any) {
         )
     })
     
-    fastify.delete('/annee/delete/:idannee', (request:FastifyRequest<{
+    fastify.delete('/delete/:idannee', (request:FastifyRequest<{
             Params: {
                 idannee: string,
             };
