@@ -41,7 +41,7 @@ export default async function routes (fastify : any, options : any) {
         };
     }>
 
-    fastify.put('/exoL/putRequest/:idExoLong', (request:PutRequestExoLong, reply:FastifyReply) => {
+    fastify.put('/putRequest/:idExoLong', (request:PutRequestExoLong, reply:FastifyReply) => {
         fastify.mysql.query(
             'UPDATE `exolong` SET titreExoLong = '+request.body.titreExoLong+', contenu = '+ request.body.contenu+', difficulte ='+request.body.difficulte+', idCorrection =' +request.body.idCorrection+', idMatiere ='+request.body.idMatiere+' WHERE idexolong = '+ request.params.idExoLong,
             function onResult (err:any, result:any) {
@@ -60,7 +60,7 @@ export default async function routes (fastify : any, options : any) {
         };
     }>
 
-    fastify.put('/exoL/putRequest/:idExoLong/:idUser', (request:PutRequestExoLongCorrige, reply:FastifyReply) => {
+    fastify.put('/putRequest/:idExoLong/:idUser', (request:PutRequestExoLongCorrige, reply:FastifyReply) => {
         fastify.mysql.query(
             'UPDATE `exolongeffectué` SET dateExoLong = '+request.body.dateExoLong+' WHERE idexolong = '+ request.params.idExoLong+' and iduser = '+ request.params.idUser,
             function onResult (err:any, result:any) {
@@ -69,7 +69,7 @@ export default async function routes (fastify : any, options : any) {
         )
     })
 
-    fastify.delete('/exoL/delete/:idExoLong', (request:FastifyRequest<{
+    fastify.delete('/delete/:idExoLong', (request:FastifyRequest<{
             Params: {
                 idExoLong: string,
             };
@@ -82,7 +82,7 @@ export default async function routes (fastify : any, options : any) {
             )
         })
 
-    fastify.delete('/exoL/delete/:idExoLong/:iduser', (request:FastifyRequest<{
+    fastify.delete('/delete/:idExoLong/:iduser', (request:FastifyRequest<{
             Params: {
                 idExoLong: string,
                 iduser: string
