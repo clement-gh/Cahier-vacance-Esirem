@@ -39,7 +39,7 @@ export default async function routes (fastify : any, options : any) {
         };
     }>
 
-    fastify.put('/quizz/putRequest/:idQuizz', (request:PutRequestQuizz, reply:FastifyReply) => {
+    fastify.put('/putRequest/:idQuizz', (request:PutRequestQuizz, reply:FastifyReply) => {
         fastify.mysql.query(
             'UPDATE `quizz` SET titreQuizz = '+request.body.titreQuizz+', contenu = '+ request.body.contenu+', difficulte ='+request.body.difficulte+', idMatiere ='+request.body.idMatiere+' WHERE idquizz = '+ request.params.idQuizz,
             function onResult (err:any, result:any) {
@@ -58,7 +58,7 @@ export default async function routes (fastify : any, options : any) {
         };
     }>
 
-    fastify.put('/quizz/putRequest/:idQuizz/:idUser', (request:PutRequestQuizzEffectue, reply:FastifyReply) => {
+    fastify.put('/putRequest/:idQuizz/:idUser', (request:PutRequestQuizzEffectue, reply:FastifyReply) => {
         fastify.mysql.query(
             'UPDATE `quizzeffectué` SET dateQuizz = '+request.body.dateQuizz+' WHERE idquizz = '+ request.params.idQuizz+' and iduser = '+ request.params.idUser,
             function onResult (err:any, result:any) {
@@ -66,4 +66,31 @@ export default async function routes (fastify : any, options : any) {
             }
         )
     })
+
+    fastify.delete('/delete/:idquizz', (request:FastifyRequest<{
+            Params: {
+                idquizz: string,
+            };
+        }>, reply:FastifyReply) => {
+            fastify.mysql.query(
+                'DELETE FROM `quizz` WHERE idquizz = ' + request.params.idquizz,
+                function onResult (err:any, result:any) {
+                    reply.send(err || result[0])
+                }
+            )
+        })
+
+     fastify.delete('/delete/:idquizz/:iduser', (request:FastifyRequest<{
+            Params: {
+                idquizz: string,
+                iduser: string,
+            };
+        }>, reply:FastifyReply) => {
+            fastify.mysql.query(
+                'DELETE FROM `quizzeffectué` WHERE idquizz = ' + request.params.idquizz +' and iduser = '+request.params.iduser,
+                function onResult (err:any, result:any) {
+                    reply.send(err || result[0])
+                }
+            )
+        })
 }
