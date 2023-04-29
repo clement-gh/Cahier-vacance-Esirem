@@ -52,7 +52,7 @@ export default async function routes (fastify : any, options : any) {
             };
         }>
 
-        fastify.put('/matiere/putRequest/:idMatiere', (request:PutRequestMatiere, reply:FastifyReply) => {
+        fastify.put('/putRequest/:idMatiere', (request:PutRequestMatiere, reply:FastifyReply) => {
             fastify.mysql.query(
                 'UPDATE `matiere` SET nom = '+request.body.nom+',idAnneeEsirem ='+request.body.idAnneeEsirem +' WHERE idMatiere = '+ request.params.idMatiere,
                 function onResult (err:any, result:any) {
@@ -60,4 +60,19 @@ export default async function routes (fastify : any, options : any) {
                 }
             )
         })
+        fastify.delete('/delete/:idmatiere', (request:FastifyRequest<{
+                Params: {
+                    idmatiere: String,
+                };
+            }>, reply:FastifyReply) => {
+                fastify.mysql.query(
+
+                    'DELETE FROM `matiere` WHERE idMatiere= '+request.params.idmatiere,
+                    
+                    function onResult (err:any, result:any) {
+                        reply.send(err || result)
+                    }
+                )
+             
+            })
 }
