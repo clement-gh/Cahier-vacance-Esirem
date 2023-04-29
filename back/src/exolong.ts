@@ -69,5 +69,32 @@ export default async function routes (fastify : any, options : any) {
         )
     })
 
+    fastify.delete('/exoL/delete/:idExoLong', (request:FastifyRequest<{
+            Params: {
+                idExoLong: string,
+            };
+        }>, reply:FastifyReply) => {
+            fastify.mysql.query(
+                'DELETE FROM `exolong` WHERE idexolong = ' + request.params.idExoLong,
+                function onResult (err:any, result:any) {
+                    reply.send(err || result[0])
+                }
+            )
+        })
+
+    fastify.delete('/exoL/delete/:idExoLong/:iduser', (request:FastifyRequest<{
+            Params: {
+                idExoLong: string,
+                iduser: string
+            };
+        }>, reply:FastifyReply) => {
+            fastify.mysql.query(
+                'DELETE FROM `exolongeffectué` WHERE idexolong = ' + request.params.idExoLong + ' and iduser = '+request.params.iduser,
+                function onResult (err:any, result:any) {
+                    reply.send(err || result[0])
+                }
+            )
+        })
+
 
     }
