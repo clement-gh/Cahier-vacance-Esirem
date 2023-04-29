@@ -45,7 +45,7 @@ export default async function routes (fastify : any, options : any) {
         };
     }>
 
-    fastify.put('/rubrique/putRequest/:idRubrique', (request:PutRequestRubrique, reply:FastifyReply) => {
+    fastify.put('/putRequest/:idRubrique', (request:PutRequestRubrique, reply:FastifyReply) => {
         fastify.mysql.query(
             'UPDATE `rubrique` SET idcours = '+request.body.idCours+',idmatiere = '+request.body.idMatiere+',idquizz = '+request.body.idQuizz+', idCours = '+request.body.idCours+', idexolong = '+request.body.idExoLong+' WHERE idrubrique = '+ request.params.idRubrique,
             function onResult (err:any, result:any) {
@@ -53,4 +53,17 @@ export default async function routes (fastify : any, options : any) {
             }
         )
     })
+
+    fastify.delete('/delete/:idRubrique', (request:FastifyRequest<{
+            Params: {
+                idRubrique: string,
+            };
+        }>, reply:FastifyReply) => {
+            fastify.mysql.query(
+                'DELETE FROM `rubrique` WHERE idRubrique = ' + request.params.idRubrique,
+                function onResult (err:any, result:any) {
+                    reply.send(err || result[0])
+                }
+            )
+        })
 }
