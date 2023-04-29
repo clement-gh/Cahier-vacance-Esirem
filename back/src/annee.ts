@@ -57,6 +57,20 @@ export default async function routes (fastify : any, options : any) {
             }
         )
     })
+    
+    fastify.delete('/annee/delete/:idannee', (request:FastifyRequest<{
+            Params: {
+                idannee: string,
+            };
+        }>, reply:FastifyReply) => {
+            fastify.mysql.query(
+                'DELETE FROM `anneeesirem` WHERE idanneeesirem = ' + request.params.idannee,
+                function onResult (err:any, result:any) {
+                    reply.send(err || result[0])
+                }
+            )
+        })
+
 
     
 }
