@@ -37,7 +37,7 @@ export default async function routes (fastify : any, options : any) {
         };
     }>
 
-    fastify.put('/correction/putRequest/:idCorrection', (request:PutRequestCorrection, reply:FastifyReply) => {
+    fastify.put('/putRequest/:idCorrection', (request:PutRequestCorrection, reply:FastifyReply) => {
         fastify.mysql.query(
             'UPDATE `correction` SET titreCorrection = '+request.body.titreCorrection+',contenu = '+request.body.contenu+' WHERE idcorrection = '+ request.params.idCorrection,
             function onResult (err:any, result:any) {
@@ -45,7 +45,7 @@ export default async function routes (fastify : any, options : any) {
             }
         )
     })
-    fastify.delete('/correction/delete/:idCorrection', (request:FastifyRequest<{
+    fastify.delete('/delete/:idCorrection', (request:FastifyRequest<{
             Params: {
                 idCorrection: string,
             };
