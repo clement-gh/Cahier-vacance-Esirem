@@ -45,4 +45,16 @@ export default async function routes (fastify : any, options : any) {
             }
         )
     })
+    fastify.delete('/correction/delete/:idCorrection', (request:FastifyRequest<{
+            Params: {
+                idCorrection: string,
+            };
+        }>, reply:FastifyReply) => {
+            fastify.mysql.query(
+                'DELETE FROM `correction` WHERE idCorrection = ' + request.params.idCorrection,
+                function onResult (err:any, result:any) {
+                    reply.send(err || result[0])
+                }
+            )
+        })
 }
