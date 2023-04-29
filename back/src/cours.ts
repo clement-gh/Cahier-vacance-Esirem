@@ -84,4 +84,29 @@ export default async function routes (fastify : any, options : any) {
             }
         )
     })
+    fastify.delete('/cours/delete/:idcours/:iduser', (request:FastifyRequest<{
+            Params: {
+                idcours: string,
+                iduser: string,
+            };
+        }>, reply:FastifyReply) => {
+            fastify.mysql.query(
+                'DELETE FROM `courslu` WHERE idCours = ' + request.params.idcours +' and iduser = '+request.params.iduser,
+                function onResult (err:any, result:any) {
+                    reply.send(err || result[0])
+                }
+            )
+        })
+    fastify.delete('/cours/delete/:idcours', (request:FastifyRequest<{
+            Params: {
+                idcours: string,
+            };
+        }>, reply:FastifyReply) => {
+            fastify.mysql.query(
+                'DELETE FROM `cours` WHERE idcours = ' + request.params.idcours,
+                function onResult (err:any, result:any) {
+                    reply.send(err || result[0])
+                }
+            )
+        })
 }
