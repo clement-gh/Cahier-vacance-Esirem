@@ -27,6 +27,41 @@ export default async function routes (fastify : any, options : any) {
         )
     })
 
+    //return le cours, avec le nom de la matiere et de son année, selon son id
+    fastify.get('Complets/:idCours', (request:FastifyRequest<{
+        Params: {
+            idCours: string,
+        };
+    }>, reply:FastifyReply) => {
+        fastify.mysql.query(
+            "SELECT cours.idCours, cours.titreCours, matiere.nom as nomMatiere, anneeesirem.nom as annee, rubrique.idRubrique, contenu, dateCreation "
+            +"FROM cours "
+            +"left join rubrique on cours.idCours = rubrique.idCours "
+            +"left join matiere on matiere.idMatiere = rubrique.idMatiere "
+            +"left join anneeesirem on matiere.idAnneeEsirem = anneeesirem.idAnneeEsirem "
+            +"where cours.idCours = ?;",
+            request.params.idCours,
+            function onResult (err:any, result:any) {
+                reply.send(err || result[0])
+            }
+        )
+    })
+
+    //return le cours avec le nom de la matiere et de son année
+    fastify.get('Complets', (request:FastifyRequest, reply:FastifyReply) => {
+        fastify.mysql.query(
+            "SELECT cours.idCours, cours.titreCours, matiere.nom as nomMatiere, anneeesirem.nom as annee, rubrique.idRubrique, contenu, dateCreation "
+            +"FROM cours "
+            +"left join rubrique on cours.idCours = rubrique.idCours "
+            +"left join matiere on rubrique.idMatiere = matiere.idMatiere "
+            +"left join anneeesirem on matiere.idAnneeEsirem = anneeesirem.idAnneeEsirem "
+            +"group by cours.idCours;",
+            function onResult (err:any, result:any) {
+                reply.send(err || result)
+            }
+        )
+    })
+
     type PostRequestCours = FastifyRequest<{
         Body: {
             titreCours: string, 
