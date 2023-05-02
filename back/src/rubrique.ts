@@ -17,6 +17,21 @@ export default async function routes (fastify : any, options : any) {
         )
 
     })
+
+    fastify.get('/id/:idRubrique', (request:FastifyRequest<{
+        Params: {
+            idRubrique: string,
+        };
+    }>, reply:FastifyReply) => {
+        fastify.mysql.query(
+            'SELECT * FROM rubrique where idRubrique= ?;',
+            request.params.idRubrique,
+            function onResult (err:any, result:any) {
+                reply.send(err || result)
+            }
+        )
+    })
+
     //data correspond au info retourné par la requete sql
     //return un cours 
     fastify.get('/:idMatiere', (request:FastifyRequest<{
