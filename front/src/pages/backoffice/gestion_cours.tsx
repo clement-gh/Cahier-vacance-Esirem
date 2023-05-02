@@ -9,9 +9,10 @@ import { Year, loadAllYears } from "../../model/yearLoader";
 import { loadNomMatiere } from "../../model/MatiereLoader";
 import { SearchBar } from "../../components/search_bar";
 import "./gestion_cours.css"
+import { Course, loadAllCourses } from "../../model/CourseLoader";
 
 type GestionCoursState = {
-
+    courses: Course[],
     years: Year[];
     nomMatieres: string[],
 };
@@ -20,6 +21,7 @@ export class GestionCours extends React.Component<any, GestionCoursState> {
     constructor(props: any) {
         super(props);
         this.state = {
+            courses: [],
             years: [],
             nomMatieres: [],
         };
@@ -28,8 +30,10 @@ export class GestionCours extends React.Component<any, GestionCoursState> {
     async componentDidMount() {
         let years = await loadAllYears();
         let matieres = await loadNomMatiere();
+        let courses = await loadAllCourses();
 
         this.setState({
+            courses: courses,
             years: years,
             nomMatieres: matieres,
         });
@@ -63,13 +67,13 @@ export class GestionCours extends React.Component<any, GestionCoursState> {
 
                     <Table row_titles={["Création", "Titre", "Auteur", "Type", "Année", "Matiere"]} 
                         rows={
-                            [["10/01/2022", "Titre1", "Prenom1", "Etudiant", "3ème", "Info"],
-                             ["10/05/2022", "Titre2", "Prenom2", "Professeur", "4ème", "Elec"],
-                             ["10/01/2022", "Titre3", "Prenom3", "Admin", "-", "Maths"]]
+                            this.state.courses.map((course) => {
+                                return ["-", course.title, "-", "Cours", "-", "-" ];
+                            })
                         }
                     />
 
-                    <p className="paragraph_nb_result">4 résultats obtenus</p>
+                    <p className="paragraph_nb_result">{this.state.courses.length} résultats obtenus</p>
 
                     <div className="gestion_cours_buttons_div">
                         <Button content="Créer un cours" color={ColorButton.BLUE}/>

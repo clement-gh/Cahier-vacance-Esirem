@@ -29,6 +29,24 @@ export async function loadCourse(id: number | string): Promise<Course> {
     return course;
 }
 
+export async function loadAllCourses(): Promise<Course[]> {
+    let json = await callAPI("cours");
+    let courses: Course[] = [];
+
+    for(let i = 0; i < json.length; i++) {
+        let course : Course = {
+            id: json[i].idCours,
+            idRubrique: json[i].idRubrique,
+            title: json[i].titreCours,
+            contenu: json[i].contenu,
+        }
+        courses.push(course);
+    }
+
+    console.log(courses);
+    return courses;
+}
+
 //function who extract a substring between two born
 export function extractStringBetweenBorn(origin: string, born1: string, born2: string) : string | undefined {
     let extractedString = origin.split(born1)[1]?.split(born2);    
