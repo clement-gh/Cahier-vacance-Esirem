@@ -1,10 +1,10 @@
 import React from "react";
-import { ParagraphCourse } from "../components/course_page_components/paragraphCourse";
 import { Footer } from "../components/footer";
 import { NavBar } from "../components/navbar";
 import { Title } from "../components/title";
-import { TipsCourseType } from "../model/Course_page_models/tipsCourseModel";
 import { Course, loadCourse } from "../model/CourseLoader";
+import "../components/text_editor/text_editor.css";
+import "./cours.css";
 
 type CoursProps = {
     course: Course,
@@ -17,7 +17,7 @@ export class Cours extends React.Component<any, CoursProps>{
             id: 0,
             idRubrique: 0,
             title: "loading",
-            paragraphs: [],
+            contenu: "",
         } };
     }
 
@@ -32,14 +32,7 @@ export class Cours extends React.Component<any, CoursProps>{
             <main>
                 <NavBar/>
                 <Title content={this.state.course.title}/>
-                {
-                    this.state.course.paragraphs.map((value) => {
-                        return <ParagraphCourse tipsType={TipsCourseType.TIPS} 
-                            tipsContent={value.annotation} 
-                            title={value.title} secondaryTitle={value.subTitle} 
-                            content={value.content}/>
-                    })
-                }
+                <div className="ProseMirror cours_div_content"  dangerouslySetInnerHTML={{__html: this.state.course.contenu}} />
                 <Footer/>
             </main>
         );
