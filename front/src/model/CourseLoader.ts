@@ -1,10 +1,13 @@
 import { callAPI } from "./api_caller";
 
 export type Course = {
-    id: number;
-    idRubrique: number;
-    title: string;
+    id: number,
+    idRubrique: number,
+    title: string,
+    nomMatiere: string,
+    annee: string,
     contenu: string,
+    dateCreation?: Date,
 }
 
 export type Paragraph = {
@@ -18,27 +21,34 @@ export type Paragraph = {
 
 //function to load a course with his id
 export async function loadCourse(id: number | string): Promise<Course> {
-    let principal = await callAPI("cours/" + id);
+    let principal = await callAPI("coursComplets/" + id);
     
     let course : Course = {
         id: principal.idCours,
         idRubrique: principal.idRubrique,
         title: principal.titreCours,
+        nomMatiere: principal.nomMatiere,
+        annee: principal.annee,
         contenu: principal.contenu,
+        dateCreation: principal.dateCreation ? new Date(principal.dateCreation) : undefined,
     }
     return course;
 }
 
 export async function loadAllCourses(): Promise<Course[]> {
-    let json = await callAPI("cours");
+    let json = await callAPI("coursComplets");
     let courses: Course[] = [];
+    console.log(json);
 
     for(let i = 0; i < json.length; i++) {
         let course : Course = {
             id: json[i].idCours,
             idRubrique: json[i].idRubrique,
             title: json[i].titreCours,
+            nomMatiere: json[i].nomMatiere,
+            annee: json[i].annee,
             contenu: json[i].contenu,
+            dateCreation: json[i].dateCreation ? new Date(json[i].dateCreation) : undefined,
         }
         courses.push(course);
     }

@@ -1,6 +1,5 @@
 import { callAPI } from "./api_caller";
 
-
 export async function loadNomMatiere(): Promise<string[]> {
     let nomMatieres: string[] = [];
 

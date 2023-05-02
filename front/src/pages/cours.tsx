@@ -17,6 +17,8 @@ export class Cours extends React.Component<any, CoursProps>{
             id: 0,
             idRubrique: 0,
             title: "loading",
+            nomMatiere: "",
+            annee: "",
             contenu: "",
         } };
     }

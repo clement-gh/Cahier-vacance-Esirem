@@ -68,7 +68,8 @@ export class GestionCours extends React.Component<any, GestionCoursState> {
                     <Table row_titles={["Création", "Titre", "Auteur", "Type", "Année", "Matiere"]} 
                         rows={
                             this.state.courses.map((course) => {
-                                return ["-", course.title, "-", "Cours", "-", "-" ];
+                                let date: String = course.dateCreation? course.dateCreation.toLocaleDateString() : " - ";
+                                return [date, course.title, "-", "Cours", course.annee, course.nomMatiere ];
                             })
                         }
                     />
