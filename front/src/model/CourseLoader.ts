@@ -38,7 +38,6 @@ export async function loadCourse(id: number | string): Promise<Course> {
 export async function loadAllCourses(): Promise<Course[]> {
     let json = await callAPI("coursComplets");
     let courses: Course[] = [];
-    console.log(json);
 
     for(let i = 0; i < json.length; i++) {
         let course : Course = {
@@ -53,7 +52,6 @@ export async function loadAllCourses(): Promise<Course[]> {
         courses.push(course);
     }
 
-    console.log(courses);
     return courses;
 }
 

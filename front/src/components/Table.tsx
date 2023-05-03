@@ -1,13 +1,9 @@
 import React from "react";
 import "./Table.css"
-import { TableModel } from "../model/tableModel";
+import { Row, TableModel } from "../model/tableModel";
 import { Input } from "./form/input";
 
 export class Table extends React.Component<TableModel> {
-    constructor(props: any) {
-        super(props);
-    }
-
     render(): React.ReactNode {
         return (
             <table className="table_table">
@@ -20,12 +16,12 @@ export class Table extends React.Component<TableModel> {
                 }
                 </tr>
                 {
-                this.props.rows.map((row: String[], index: number)=>{
+                this.props.rows.map((row: Row, index: number)=>{
                     index %=2;
-                    return <tr className={"table_row_data " + "table_row_data" + index}>
+                    return <tr id={"table_tr" + row.idRow} onDoubleClick={() =>{ if(this.props.doubleClick) this.props.doubleClick(row);}} className={"table_row_data table_row_data" + index}>
                         <td className="table_row_titles_title"><Input type="checkbox"/></td>
                         {
-                            row.map((value) => {
+                            row.content.map((value) => {
                                 return <td className="table_row_data_column">{value}</td>
                             })
                         }

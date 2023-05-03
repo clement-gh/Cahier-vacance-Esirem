@@ -27,9 +27,9 @@ export class GestionUtilisateurs extends React.Component {
 
                     <Table row_titles={["Inscription", "Nom", "Prenom", "Statut", "Année"]} 
                         rows={
-                            [["10/01/2022", "Nom1", "Prenom1", "Etudiant", "3ème"],
-                             ["10/05/2022", "Nom2", "Prenom2", "Professeur", "-"],
-                             ["10/01/2022", "Nom3", "Prenom3", "Admin", "-"]]
+                            [{content: ["10/01/2022", "Nom1", "Prenom1", "Etudiant", "3ème"]},
+                             {content: ["10/05/2022", "Nom2", "Prenom2", "Professeur", "-"]},
+                             {content: ["10/01/2022", "Nom3", "Prenom3", "Admin", "-"]}]
                         }
                     />
 

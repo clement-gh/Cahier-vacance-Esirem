@@ -49,7 +49,7 @@ export class CreateCoursPage extends React.Component<any, CreateCoursPageState> 
             titreCours: title, 
             contenu: html,            
         }
-        let b = await PostApi('cours/post/', coursToPost);
+        await PostApi('cours/post/', coursToPost);
     }
 
     render(): React.ReactNode {

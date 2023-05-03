@@ -10,6 +10,7 @@ import { loadNomMatiere } from "../../model/MatiereLoader";
 import { SearchBar } from "../../components/search_bar";
 import "./gestion_cours.css"
 import { Course, loadAllCourses } from "../../model/CourseLoader";
+import { Row } from "../../model/tableModel";
 
 type GestionCoursState = {
     courses: Course[],
@@ -37,6 +38,14 @@ export class GestionCours extends React.Component<any, GestionCoursState> {
             years: years,
             nomMatieres: matieres,
         });
+    }
+
+    funcDoubleClickTr(row: Row) {
+        console.log(row);        
+    }
+
+    funcCreateButton(): void {
+        window.open("./creation_cours");
     }
 
     render(): React.ReactNode {
@@ -69,15 +78,20 @@ export class GestionCours extends React.Component<any, GestionCoursState> {
                         rows={
                             this.state.courses.map((course) => {
                                 let date: String = course.dateCreation? course.dateCreation.toLocaleDateString() : " - ";
-                                return [date, course.title, "-", "Cours", course.annee, course.nomMatiere ];
+                                let row = {
+                                    idRow: course.id,
+                                    content: [date, course.title, "-", "Cours", course.annee, course.nomMatiere ],
+                                }
+                                return row;
                             })
                         }
+                        doubleClick={this.funcDoubleClickTr}
                     />
 
                     <p className="paragraph_nb_result">{this.state.courses.length} résultats obtenus</p>
 
                     <div className="gestion_cours_buttons_div">
-                        <Button content="Créer un cours" color={ColorButton.BLUE}/>
+                        <Button content="Créer un cours" color={ColorButton.BLUE} onClick={this.funcCreateButton}/>
                         <Button content="Modifier un cours" color={ColorButton.YELLOW}/>
                         <Button content="Supprimer la selection" color={ColorButton.RED}/>
                     </div>
