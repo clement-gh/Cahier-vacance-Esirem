@@ -1,4 +1,4 @@
-import { PutApi, callAPI } from "./api_caller";
+import { PutApi, StatusMessage, callAPI } from "./api_caller";
 
 export type Course = {
     id: number,
@@ -55,7 +55,7 @@ export async function loadAllCourses(): Promise<Course[]> {
     return courses;
 }
 
-export async function modifyACourse(course :Course): Promise<boolean> {
+export async function modifyACourse(course :Course): Promise<StatusMessage> {
     let putBody = {
         titreCours: course.title, 
         contenu: course.contenu,

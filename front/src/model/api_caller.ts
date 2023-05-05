@@ -1,5 +1,10 @@
 const addr: string = "http://[::1]:4000/";
 
+export type StatusMessage = {
+    success: boolean,
+    errorMessage?: string,
+}
+
 ///
 /// function who call the api and handle errors
 /// return a json with data if all the request is successful
@@ -7,7 +12,7 @@ const addr: string = "http://[::1]:4000/";
 ///
 export async function callAPI(subAdrr: string): Promise<any> {
     let response: Response = await fetch(addr + subAdrr);
-    if(!handleFetchError(response)) {
+    if(!(handleFetchError(response).success)) {
         return null;
     }
 
@@ -17,7 +22,7 @@ export async function callAPI(subAdrr: string): Promise<any> {
 }
 
 ///return true if the request is fine, else return false
-export async function PostApi(subAdrr: string, body: any): Promise<boolean> {
+export async function PostApi(subAdrr: string, body: any): Promise<StatusMessage> {
     let response = await fetch(addr + subAdrr, {
             method: 'POST',
             body: JSON.stringify(body),  
@@ -27,7 +32,7 @@ export async function PostApi(subAdrr: string, body: any): Promise<boolean> {
     
 }
 
-export async function PutApi(subAdrr: string, body: any): Promise<boolean> {
+export async function PutApi(subAdrr: string, body: any): Promise<StatusMessage> {
     let response = await fetch(addr + subAdrr, {
         method: 'PUT',
         body: JSON.stringify(body),  
@@ -37,13 +42,18 @@ export async function PutApi(subAdrr: string, body: any): Promise<boolean> {
 }
 
 ///return true if everything is fine, else return false
-function handleFetchError(response: Response): boolean {
+function handleFetchError(response: Response): StatusMessage {
     if(response.status !== 200) {
         console.log(response.url);
         console.log("code erreur : " + response.status);
         console.log(response.statusText);
         console.log(response.text());
-        return false;
+        return {
+            success: false,
+            errorMessage: response.statusText,
+        };
     }
-    return true;
+    return {
+        success: true,
+    };
 }

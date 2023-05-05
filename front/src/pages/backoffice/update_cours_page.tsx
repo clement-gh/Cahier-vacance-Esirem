@@ -9,12 +9,19 @@ import { Input } from "../../components/form/input";
 import { Year, loadAllYears } from "../../model/yearLoader";
 import { loadNomMatiere } from "../../model/MatiereLoader";
 import { Course, loadCourse, modifyACourse } from "../../model/CourseLoader";
+import "./create_cours_page.css"
+import { ErrorPopUp } from "../../components/error_pop_up";
 
 
 type UpdateCoursPageState = {
     cours?: Course,
     years: Year[],
     nomMatieres: string[],
+    statusMessage: {
+        displayed: boolean,
+        title: string,
+        content: string,
+    },
 }
 
 export class UpdateCoursPage extends React.Component<any, UpdateCoursPageState> {
@@ -23,6 +30,11 @@ export class UpdateCoursPage extends React.Component<any, UpdateCoursPageState> 
         this.state = {
             years: [],
             nomMatieres: [],
+            statusMessage: {
+                displayed: false,
+                title: "",
+                content: "",
+            },
         };
     }
 
@@ -55,19 +67,34 @@ export class UpdateCoursPage extends React.Component<any, UpdateCoursPageState> 
         course.title = title;
         course.contenu = html;
 
-        let res = await modifyACourse(course);
-        console.log(res);
-        if(res) {
+        let result = await modifyACourse(course);
+        let statusMessage;
+        if(result.success) {
+            statusMessage = {
+                displayed: true,
+                title: "Succes !",
+                content: "La mise à jour s'est bien passé ! \nVous pouvez retournez au menu",
+            }
             this.setState({
+                statusMessage: statusMessage,
                 cours: course,
-                years: [],
-                nomMatieres: [],
+            });
+        }
+        else {
+            statusMessage = {
+                displayed: true,
+                title: "Une erreur est survenu !",
+                content: result.errorMessage? result.errorMessage : "",
+            }
+            this.setState({
+                statusMessage: statusMessage,
             });
         }
     }
 
     render(): React.ReactNode {
         return (
+            <>
             <main>
                 <NavBar/>
                 <Title content="Mise à jour du cours"/>  
@@ -102,6 +129,12 @@ export class UpdateCoursPage extends React.Component<any, UpdateCoursPageState> 
 
                 <Footer/>
             </main>
+            <ErrorPopUp title={this.state.statusMessage.title}
+            message={this.state.statusMessage.content}
+            isDisplayed={this.state.statusMessage.displayed}
+            link="./gestion_cours"
+            />
+            </>
         );
     }
 }
