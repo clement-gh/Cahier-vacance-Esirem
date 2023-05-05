@@ -18,7 +18,6 @@ export async function callAPI(subAdrr: string): Promise<any> {
 
 ///return true if the request is fine, else return false
 export async function PostApi(subAdrr: string, body: any): Promise<boolean> {
-    // [string, string][] | Record<string, string> | Headers;
     let response = await fetch(addr + subAdrr, {
             method: 'POST',
             body: JSON.stringify(body),  
@@ -26,6 +25,15 @@ export async function PostApi(subAdrr: string, body: any): Promise<boolean> {
         });
     return handleFetchError(response);
     
+}
+
+export async function PutApi(subAdrr: string, body: any): Promise<boolean> {
+    let response = await fetch(addr + subAdrr, {
+        method: 'PUT',
+        body: JSON.stringify(body),  
+        headers: [["Content-Type","application/json"]], 
+    });
+    return handleFetchError(response);
 }
 
 ///return true if everything is fine, else return false

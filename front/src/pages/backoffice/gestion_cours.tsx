@@ -41,7 +41,7 @@ export class GestionCours extends React.Component<any, GestionCoursState> {
     }
 
     funcDoubleClickTr(row: Row) {
-        console.log(row);        
+        window.open("./update_cours/" + row.idRow);
     }
 
     funcCreateButton(): void {

@@ -16,6 +16,7 @@ import { CreateCoursPage } from "./pages/backoffice/create_cours_page";
 import { MenuBackOffice } from "./pages/backoffice/menu_backoffice";
 import { GestionUtilisateurs } from "./pages/backoffice/gestion_utilisateurs";
 import { GestionCours } from "./pages/backoffice/gestion_cours";
+import { UpdateCoursPage } from "./pages/backoffice/update_cours_page";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -33,10 +34,11 @@ root.render(
       <Route path="/ExoLong/:id" element={<ExerciceL/>}/>
       <Route path="/corrige/:id" element={<Corrige/>}/>
       
-      <Route path="/backoffice" element={<MenuBackOffice/>}></Route>
-      <Route path="/backoffice/gestion_cours" element={<GestionCours/>}></Route>
-      <Route path="/backoffice/gestion_utilisateurs" element={<GestionUtilisateurs/>}></Route>
-      <Route path="/backoffice/creation_cours" element={<CreateCoursPage/>}></Route>
+      <Route path="/backoffice" element={<MenuBackOffice/>} />
+      <Route path="/backoffice/gestion_cours" element={<GestionCours/>} />
+      <Route path="/backoffice/gestion_utilisateurs" element={<GestionUtilisateurs/>} />
+      <Route path="/backoffice/creation_cours" element={<CreateCoursPage/>} />
+      <Route path="/backoffice/update_cours/:idCours" element={<UpdateCoursPage/>} />
       <Route path="*" element={<NoPage />} />
     </Routes>
   </BrowserRouter>

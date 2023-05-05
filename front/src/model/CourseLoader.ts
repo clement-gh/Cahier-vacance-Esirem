@@ -1,4 +1,4 @@
-import { callAPI } from "./api_caller";
+import { PutApi, callAPI } from "./api_caller";
 
 export type Course = {
     id: number,
@@ -54,6 +54,16 @@ export async function loadAllCourses(): Promise<Course[]> {
 
     return courses;
 }
+
+export async function modifyACourse(course :Course): Promise<boolean> {
+    let putBody = {
+        titreCours: course.title, 
+        contenu: course.contenu,
+    };
+
+    return await PutApi("cours/putRequest/"+course.id, putBody);
+}
+
 
 //function who extract a substring between two born
 export function extractStringBetweenBorn(origin: string, born1: string, born2: string) : string | undefined {

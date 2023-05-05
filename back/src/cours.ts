@@ -88,13 +88,13 @@ export default async function routes (fastify : any, options : any) {
         Body: {
             titreCours: string, 
             contenu: string,
-            idMatiere: string
         };
     }>
 
-    fastify.put('/cours/putRequest/:idCours', (request:PutRequestCours, reply:FastifyReply) => {
+    fastify.put('/putRequest/:idCours', (request:PutRequestCours, reply:FastifyReply) => {
         fastify.mysql.query(
-            'UPDATE `cours` SET titreCours = '+request.body.titreCours+', contenu = '+ request.body.contenu+', idMatiere ='+request.body.idMatiere+' WHERE idcours = '+ request.params.idCours,
+            'UPDATE `cours` SET titreCours = ?, contenu = ? WHERE idcours = ?;',
+            [request.body.titreCours, request.body.contenu, request.params.idCours],
             function onResult (err:any, result:any) {
                 reply.send(err || result[0])
             }
