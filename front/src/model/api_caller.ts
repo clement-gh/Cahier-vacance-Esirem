@@ -41,6 +41,15 @@ export async function PutApi(subAdrr: string, body: any): Promise<StatusMessage>
     return handleFetchError(response);
 }
 
+export async function DeleteApi(subAdrr: string, body: any): Promise<StatusMessage> {
+    let response = await fetch(addr + subAdrr, {
+        method: 'DELETE',
+        body: JSON.stringify(body),
+        headers: [["Content-Type","application/json"]], 
+    });
+    return handleFetchError(response);
+}
+
 ///return true if everything is fine, else return false
 function handleFetchError(response: Response): StatusMessage {
     if(response.status !== 200) {

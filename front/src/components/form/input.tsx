@@ -8,6 +8,7 @@ type InputProps = {
     value?: string,
     placeholder?: string,
     id?: string,
+    onChangeCallback?: (id?: string) => void,
 };
 
 export class Input extends React.Component<InputProps> {
@@ -21,7 +22,8 @@ export class Input extends React.Component<InputProps> {
         return (
             <div className={classInputDiv}>
                 {this.props.label && <label className="input_label">{this.props.label}</label>}
-                <input id={this.props.id} className="input_input" type={this.props.type} defaultValue={this.props.value} placeholder={this.props.placeholder}/>
+                <input id={this.props.id} className="input_input" type={this.props.type} defaultValue={this.props.value} placeholder={this.props.placeholder} 
+                onClick={ () => { if(this.props.onChangeCallback) this.props.onChangeCallback(this.props.id); } }/>
             </div>
         );
     }

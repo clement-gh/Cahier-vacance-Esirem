@@ -1,4 +1,4 @@
-import { PutApi, StatusMessage, callAPI } from "./api_caller";
+import { DeleteApi, PutApi, StatusMessage, callAPI } from "./api_caller";
 
 export type Course = {
     id: number,
@@ -62,6 +62,13 @@ export async function modifyACourse(course :Course): Promise<StatusMessage> {
     };
 
     return await PutApi("cours/putRequest/"+course.id, putBody);
+}
+
+export async function deleteACourse(id: number): Promise<StatusMessage> {
+    const deleteBody = {
+        idcours: id,
+    }
+    return await DeleteApi("cours/delete/" + id, deleteBody);
 }
 
 

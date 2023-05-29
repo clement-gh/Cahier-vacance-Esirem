@@ -1,7 +1,8 @@
 export type TableModel = {
     row_titles: String[],
     rows: Row[],
-    doubleClick?: (row: Row) => void;
+    doubleClick?: (row: Row) => void,
+    onChangeCallback?: (row: Row) => void,
 }
 
 export type Row = {
