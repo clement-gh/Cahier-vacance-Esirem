@@ -28,7 +28,7 @@ export function getEditor() : Editor | null {
 ///
 export function TextEditor(props: TextEditorProps) {
   const content: string = props.content ? props.content : ("<h2>Bienvenue !</h2>"
-      +"<p>Créer ton propre cours avec cette éditeur</p>");
+      +"<p>Créer ton propre cours avec cet éditeur</p>");
   editor = useEditor({
     extensions: [
         TextStyle,
