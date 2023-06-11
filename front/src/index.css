@@ -5,6 +5,7 @@ html {
     --main-color: #009EE2;
     --second-color: #C6C6C6;
     --third-color : #005794;
+    font-family: "Open Sans";
 }
 
 body {

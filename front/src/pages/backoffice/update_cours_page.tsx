@@ -124,7 +124,7 @@ export class UpdateCoursPage extends React.Component<any, UpdateCoursPageState> 
 
                 <div className="buttons_div">
                     <div><Button onClick={() => { this.update(); }} content="Enregistrer"/></div>
-                    <div><Button content="Annulez"/></div>
+                    <div><Button content="Annuler"/></div>
                 </div>
 
                 <Footer/>

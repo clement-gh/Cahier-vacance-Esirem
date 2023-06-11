@@ -114,7 +114,7 @@ export class CreateCoursPage extends React.Component<any, CreateCoursPageState> 
 
                     <div className="buttons_div">
                         <div><Button onClick={() => { this.save(); }} content="Enregistrer"/></div>
-                        <div><Button content="Annulez"/></div>
+                        <div><Button content="Annuler"/></div>
                     </div>
 
                     <Footer/>

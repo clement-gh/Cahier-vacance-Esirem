@@ -4,7 +4,7 @@
     width: 25%;
 
     background: #FFFFFF;
-    border: 1px solid #000000;
+    border: 2px solid var(--second-color);
     border-radius: 20px;
 
 

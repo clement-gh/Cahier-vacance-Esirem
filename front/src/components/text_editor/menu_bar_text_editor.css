@@ -13,9 +13,15 @@
 
 .menu_bar_text_editor button, .menu_bar_text_editor input {
     flex: 1;
-    background-color: white;
-    border: 1px solid var(--main-color);
+    height: 2vw;
     border-radius: 5px;
     min-height: 30px;
     margin: 5px;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.menu_bar_text_editor > * > * {
+    height: 1.5vw;
 }
